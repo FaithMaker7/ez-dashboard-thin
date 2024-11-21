@@ -5,6 +5,27 @@
 
 /* 自定义全局 CssVar */
 :root {
+   /* 基础颜色 - 使用 RGB 格式便于设置透明度 */
+  --color-bg: 19, 26, 60; /* #131A3C */
+  --color-smText: 218, 222, 242; /* #DADEF2 */
+  --color-yellow: 255, 219, 41; /* #FFDB29 */
+  --color-unit: 143, 150, 204; /* #8F96CC */
+  --color-tag-yellow: 214, 229, 46; /* #D6E52E */
+  --color-tag-green: 80, 229, 167; /* #50E5A7 */
+  --color-error: 218, 41, 10; /* #DA290A */
+  --color-hint: 27, 121, 245; /* #1B79F5 */
+
+
+  /* 渐变和阴影 */
+  --gradient-main: linear-gradient(90deg, #0b7ee1 0%, #01c89d 100%);
+  --gradient-background: radial-gradient(
+    780% 100% at 50% 0%,
+    #12193c 0%,
+    #151c3c 100%
+  );
+  /* 圆角 */
+  --radius: 10px;
+
   /* 左侧菜单展开、收起动画时长 */
   --pure-transition-duration: 0.3s;
 

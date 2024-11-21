@@ -12,3 +12,24 @@ import Search from "@iconify-icons/ri/search-line";
 import InformationLine from "@iconify-icons/ri/information-line";
 addIcon("ri:search-line", Search);
 addIcon("ri:information-line", InformationLine);
+
+// 菜单栏图标
+// import Dashboard from "@/assets/svg/dashboard.svg";
+// import Contact from "@/assets/svg/contact.svg";
+// import Developer from "@/assets/svg/developer.svg";
+// import Inventation from "@/assets/svg/inventation.svg";
+// import Notification from "@/assets/svg/notification.svg";
+// import Orderhistory from "@/assets/svg/orderhistory.svg";
+// import Statics from "@/assets/svg/statics.svg";
+// import Topup from "@/assets/svg/topup.svg";
+// import Price from "@/assets/svg/price.svg";
+
+// addIcon("dashboard", Dashboard);
+// addIcon("contact", Contact);
+// addIcon("developer", Developer);
+// addIcon("inventation", Inventation);
+// addIcon("notification", Notification);
+// addIcon("orderhistory", Orderhistory);
+// addIcon("statics", Statics);
+// addIcon("topup", Topup);
+// addIcon("price", Price);

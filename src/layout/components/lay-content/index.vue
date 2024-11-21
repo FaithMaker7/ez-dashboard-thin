@@ -200,6 +200,7 @@ const transitionMain = defineComponent({
   width: 100%;
   height: 100vh;
   overflow-x: hidden;
+  background-color: rgb(var(--color-bg)) !important;
 }
 
 .app-main-nofixed-header {

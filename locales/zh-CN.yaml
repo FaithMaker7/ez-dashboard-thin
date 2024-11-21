@@ -61,7 +61,16 @@ panel:
   pureHiddenFooter: 隐藏页脚
   pureMultiTagsCache: 页签持久化
 menus:
-  pureHome: 首页
+  pureHome: 仪表盘
+  pureStatistic: 统计
+  pureFunds: 充值
+  pureReferral: 推荐
+  pureDeveloper: 开发者
+  pureHistory: 付款记录
+  pureNotify: 通知
+  pureContact: 联系我们
+  purePrice: 价格
+  pureMarket: 市场
   pureLogin: 登录
   pureAbnormal: 异常页面
   pureFourZeroFour: "404"

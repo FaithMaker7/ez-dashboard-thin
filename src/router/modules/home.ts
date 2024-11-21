@@ -1,4 +1,5 @@
 import { $t } from "@/plugins/i18n";
+import Dashboard from "@/assets/svg/menu-icon/dashboard.svg?component";
 const { VITE_HIDE_HOME } = import.meta.env;
 const Layout = () => import("@/layout/index.vue");
 
@@ -8,7 +9,7 @@ export default {
   component: Layout,
   redirect: "/welcome",
   meta: {
-    icon: "ep:home-filled",
+    icon: Dashboard,
     title: $t("menus.pureHome"),
     rank: 0
   },

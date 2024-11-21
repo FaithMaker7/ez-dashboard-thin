@@ -4,8 +4,8 @@ export default {
   meta: {
     icon: "ri:information-line",
     // showLink: false,
-    title: "Demo页面",
-    rank: 9
+    title: "Demo",
+    rank: 11
   },
   children: [
     {
@@ -13,7 +13,7 @@ export default {
       name: "Demo",
       component: () => import("@/views/demo/index.vue"),
       meta: {
-        title: "demo"
+        title: "demo" // 标签标题
       }
     }
   ]

@@ -16,11 +16,15 @@ const { title, getLogo } = useNav();
         v-if="collapse"
         key="collapse"
         :title="title"
-        class="sidebar-logo-link"
+        class="flex-c h-[100%]"
         :to="getTopMenu()?.path ?? '/'"
       >
-        <img :src="getLogo()" alt="logo" />
-        <span class="sidebar-title">{{ title }}</span>
+        <div
+          class="circe w-[60px] h-[60px] bg-[#111940] border border-[#457AF7] rounded-full flex-c"
+        >
+          <img :src="getLogo()" alt="logo" />
+        </div>
+        <!-- <span class="sidebar-title">{{ title }}</span> -->
       </router-link>
       <router-link
         v-else
@@ -29,8 +33,14 @@ const { title, getLogo } = useNav();
         class="sidebar-logo-link"
         :to="getTopMenu()?.path ?? '/'"
       >
-        <img :src="getLogo()" alt="logo" />
-        <span class="sidebar-title">{{ title }}</span>
+        <div
+          class="circe w-[45px] h-[45px] 2xl:w-[60px] 2xl:h-[60px] bg-[#111940] border border-[#457AF7] rounded-full flex-c"
+        >
+          <img :src="getLogo()" alt="logo" />
+        </div>
+        <div class="ml-3 text-[27px] text-white tracking-wider">
+          <span class="text-[#FFDB29]">EZ</span>CAPTCHA
+        </div>
       </router-link>
     </transition>
   </div>
@@ -48,7 +58,7 @@ const { title, getLogo } = useNav();
     flex-wrap: nowrap;
     align-items: center;
     height: 100%;
-    padding-left: 10px;
+    padding-left: 20px;
 
     img {
       display: inline-block;

@@ -61,7 +61,16 @@ panel:
   pureHiddenFooter: Hidden Footer
   pureMultiTagsCache: MultiTags Cache
 menus:
-  pureHome: Home
+  pureHome: Dashboard
+  pureStatistic: Statistic
+  pureFunds: Add Funds
+  pureReferral: Referral
+  pureDeveloper: Developer
+  pureHistory: Payment History
+  pureNotify: Notification
+  pureContact: Contact Us
+  purePrice: Price
+  pureMarket: market
   pureLogin: Login
   pureAbnormal: Abnormal Page
   pureFourZeroFour: "404"

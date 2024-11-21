@@ -90,6 +90,7 @@ onBeforeUnmount(() => {
   <div
     v-loading="loading"
     :class="['sidebar-container', showLogo ? 'has-logo' : 'no-logo']"
+    class=""
     @mouseenter.prevent="isShow = true"
     @mouseleave.prevent="isShow = false"
   >
@@ -133,5 +134,13 @@ onBeforeUnmount(() => {
 <style scoped>
 :deep(.el-loading-mask) {
   opacity: 0.45;
+}
+:deep(.el-text) {
+  font-size: 16px;
+}
+:deep(.el-scrollbar__view) {
+  padding: 20px 0px 20px 0px;
+  border-top: 2px solid #1b275e;
+  border-bottom: 2px solid #1b275e;
 }
 </style>
