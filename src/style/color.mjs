@@ -3,6 +3,7 @@ export const customColors = {
   custom: {
     // 基础色系
     bg: "rgba(var(--color-bg),<alpha-value>)",
+    norText: "rgba(var(--color-norText),<alpha-value>)",
     smText: "rgba(var(--color-smText),<alpha-value>)",
     yellow: "rgba(var(--color-yellow),<alpha-value>)",
     // 功能色系

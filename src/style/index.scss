@@ -5,8 +5,18 @@
 
 /* 自定义全局 CssVar */
 :root {
-   /* 基础颜色 - 使用 RGB 格式便于设置透明度 */
-  --color-bg: 19, 26, 60; /* #131A3C */
+  /* 修改element-plus 样式 */
+  --el-bg-color-overlay: #18204b; /* 背景色 */
+  --el-border-color-light: #363636; /* 边框颜色 */
+  --el-color-primary-hover: #1b275e;
+  // --el-menu-hover-bg-color: #1B275E;
+  --el-dropdown-menuItem-hover-fill: #1b275e; // 未生效
+  --el-dropdown-menuItem-hover-color: #1b275e; // 未生效
+  /* 基础颜色 - 使用 RGB 格式便于设置透明度 */
+  --color-bg: 0, 21, 41; /* #001529 */
+  --color-primary: 24, 32, 75; /* #1890FF */
+  --color-hoverBg: 27, 39, 94; /* #1B273E */
+  --color-norText: 145, 170, 242;
   --color-smText: 218, 222, 242; /* #DADEF2 */
   --color-yellow: 255, 219, 41; /* #FFDB29 */
   --color-unit: 143, 150, 204; /* #8F96CC */
@@ -14,7 +24,6 @@
   --color-tag-green: 80, 229, 167; /* #50E5A7 */
   --color-error: 218, 41, 10; /* #DA290A */
   --color-hint: 27, 121, 245; /* #1B79F5 */
-
 
   /* 渐变和阴影 */
   --gradient-main: linear-gradient(90deg, #0b7ee1 0%, #01c89d 100%);

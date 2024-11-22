@@ -49,20 +49,20 @@ const getMainWidth = computed(() => {
       ? "1440px"
       : "100%";
 });
-
+//  main模块的边距
 const getSectionStyle = computed(() => {
   return [
     hideTabs.value && layout ? "padding-top: 48px;" : "",
     !hideTabs.value && layout
       ? showModel.value == "chrome"
-        ? "padding-top: 85px;"
-        : "padding-top: 81px;"
+        ? "padding-top: 124px;" // 85
+        : "padding-top: 120px;" // 81
       : "",
     hideTabs.value && !layout.value ? "padding-top: 48px;" : "",
     !hideTabs.value && !layout.value
       ? showModel.value == "chrome"
-        ? "padding-top: 85px;"
-        : "padding-top: 81px;"
+        ? "padding-top: 124px;" // 85
+        : "padding-top: 120px;" // 81
       : "",
     props.fixedHeader
       ? ""
@@ -201,6 +201,8 @@ const transitionMain = defineComponent({
   height: 100vh;
   overflow-x: hidden;
   background-color: rgb(var(--color-bg)) !important;
+
+  /* background-color: #001529 !important; */
 }
 
 .app-main-nofixed-header {

@@ -4,10 +4,14 @@
 
 .el-breadcrumb__inner,
 .el-breadcrumb__inner a {
+  font-size: 32px;
   font-weight: 400 !important;
+  color: #fff !important;
 }
 
+// 下拉菜单样式
 .el-dropdown-menu {
+  // background-color: rgb(var(--color-primary));
   padding: 0 !important;
 }
 

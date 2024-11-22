@@ -56,8 +56,9 @@ export function useNav() {
   const getDropdownItemStyle = computed(() => {
     return (locale, t) => {
       return {
-        background: locale === t ? useEpThemeStoreHook().epThemeColor : "",
-        color: locale === t ? "#f4f4f5" : "#000"
+        // background: locale === t ? useEpThemeStoreHook().epThemeColor : "",
+        background: locale === t ? "#1B275E" : "",
+        color: locale === t ? `${useEpThemeStoreHook().epThemeColor}` : "#fff"
       };
     };
   });

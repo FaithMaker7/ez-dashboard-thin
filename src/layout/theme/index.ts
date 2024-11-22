@@ -10,12 +10,12 @@ const themeColors = {
   newez: {
     menuBg: "#18204B", // 菜单未激活时的整体背景色
     menuText: "#fff", // 菜单未激活时字体和图标的颜色
-    menuActiveText: "#80D5FF",
+    MenuActiveText: "#fff",
     menuHover: "#80D5FF",
     menuTitleHover: "#80D5FF",
     subMenuBg: "#18204B", // 子菜单未激活时的背景色
     subMenuActiveBg: "#4091f7", // 子菜单激活时字体和图标的颜色
-    subMenuActiveText: "#80D5FF", // 子菜单激活时字体和图标的颜色
+    subMenuActiveText: "#fff", // 子菜单激活时字体和图标的颜色
     sidebarLogo: "#18204B" // 左上logo区 的背景色
     // menuActiveBefore: "#fff"
   },

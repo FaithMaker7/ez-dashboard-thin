@@ -1,0 +1,125 @@
+@mixin absolute-center() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin flex-center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// 按钮的绿色发光效果
+@mixin green-glow {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: 25px;
+  width: 200px;
+  height: 65px;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle at 8.33% 47.67%,
+    #c3fb31 0%,
+    #09f4e6 6.59%
+  );
+  filter: blur(140px);
+  box-shadow: 0 0 10px hsl(155, 74%, 61%);
+  z-index: 0;
+}
+
+@mixin noise-bg {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  // border-radius: 999px;
+  opacity: 0.08; // 调整此值来控制噪点的强度
+  filter: contrast(120%) brightness(120%);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='10' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  pointer-events: none; // 确保噪点不会影响按钮的交互
+}
+
+@mixin gradient-border(
+  $border-color,
+  $base-color: (),
+  $border-width: 1px,
+  $border-top: false,
+  $opacity: 1
+) {
+  @if $border-top {
+    border-top: $border-width solid transparent;
+  } @else {
+    border: $border-width solid transparent;
+  }
+
+  $gradient: $border-color;
+
+  @if length($base-color) == 0 {
+    // 无背景色的情况
+    background-image: $gradient;
+    background-clip: border-box;
+    background-origin: border-box;
+  } @else if $base-color == transparent {
+    // 透明背景的情况
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.25) 15%,
+        rgba(255, 255, 255, 0.25) 100%
+      ),
+      $gradient !important;
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+  } @else {
+    // 支持多层背景
+    @if type-of($base-color) ==
+      "string" and
+      str-index(#{$base-color}, "gradient")
+    {
+      // 如果是渐变背景（单层或多层）
+      background: $base-color, $gradient !important;
+    } @else if
+      type-of($base-color) ==
+      "string" and
+      str-index(#{$base-color}, "gradient")
+    {
+      // 如果是渐变背景
+      background: $base-color, $gradient !important;
+    } @else if type-of($base-color) == "color" {
+      // 如果是纯色背景
+      background: linear-gradient(to right, $base-color, $base-color), $gradient !important;
+    } @else {
+      // 其他情况（比如直接传入渐变）
+      // background: $base-color, $gradient !important;
+      background-image:
+        #{$base-color},
+        $gradient !important;
+    }
+    background-clip: padding-box, border-box !important;
+    background-origin: padding-box, border-box !important;
+  }
+
+  @if $opacity != 1 {
+    opacity: $opacity;
+  }
+}
+
+// 用于添加图标悬停和点击效果
+@mixin icon-interactive {
+  transition: all 0.1s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.02);
+    filter: brightness(1.2);
+  }
+
+  &:active {
+    transform: scale(0.95);
+    filter: brightness(0.9);
+  }
+}

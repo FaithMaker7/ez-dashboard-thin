@@ -2,3 +2,6 @@
 /public/*
 public/*
 src/style/reset.scss
+src/style/index.scss
+src/style/func.scss
+src/layout/components/lay-navbar/index.vue

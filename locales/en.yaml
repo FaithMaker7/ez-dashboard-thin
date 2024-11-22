@@ -62,6 +62,7 @@ panel:
   pureMultiTagsCache: MultiTags Cache
 menus:
   pureHome: Dashboard
+  pureOverview: Overview
   pureStatistic: Statistic
   pureFunds: Add Funds
   pureReferral: Referral
