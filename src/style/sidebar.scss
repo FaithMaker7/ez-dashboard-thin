@@ -40,7 +40,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
+    width: 48px;
     height: 48px;
     cursor: pointer;
   }
@@ -51,16 +51,17 @@
     min-height: 100%;
     margin-left: $sideBarWidth;
     background: #f0f2f5;
-    
+
     /* main-content 属性动画 */
     transition: margin-left var(--pure-transition-duration);
-    
+
+    @media screen and (width <= 1920px) {
+      margin-left: 310px;
+    }
+
     .el-scrollbar__wrap {
       height: 100%;
       overflow: auto;
-    }
-    @media screen and (width <= 1920px) {
-      margin-left: 310px;
     }
   }
 
@@ -70,8 +71,10 @@
     right: 0;
     z-index: 998;
     width: calc(100% - #{$sideBarWidth});
+
     /* fixed-header 属性左上角动画 */
     transition: width var(--pure-transition-duration);
+
     @media screen and (width <= 1920px) {
       width: calc(100% - 310px);
     }
@@ -101,17 +104,17 @@
     font-size: 0;
     background: $menuBg;
     border-right: 1px solid var(--pure-border-color);
-    
+
     /* 展开动画 */
     transition: width var(--pure-transition-duration);
-    
+
     @media screen and (width >= 1920px) {
       width: $sideBarWidth !important;
     }
+
     .scrollbar-wrapper {
-      padding: 0px 10px 0px 10px;
+      // padding: 0px 10px 0px 10px;
       overflow-x: hidden !important;
-      
     }
 
     .el-scrollbar__bar.is-vertical {
@@ -122,7 +125,6 @@
       .el-scrollbar.pc {
         /* logo: 48px、leftCollapse: 40px、leftCollapse-shadow: 4px */
         height: calc(100% - 92px);
-
       }
 
       /* logo: 48px */
@@ -135,7 +137,6 @@
       .el-scrollbar.pc {
         /* leftCollapse: 40px、leftCollapse-shadow: 4px */
         height: calc(100% - 44px);
-
       }
 
       .el-scrollbar.mobile {
@@ -248,8 +249,9 @@
     /* 无子菜单的的激活菜单背景 */
     .is-active.submenu-title-noDropdown.outer-most > * {
       z-index: 1;
-      color: #80D5FF;
+      color: #80d5ff;
     }
+
     // 侧边菜单选中的背景
     .is-active.submenu-title-noDropdown.outer-most::before {
       position: absolute;
@@ -257,7 +259,7 @@
       margin: 4px 0;
       clear: both;
       content: "";
-      background: #1B275E !important;
+      background: #1b275e !important;
       border-radius: 10px;
     }
   }
@@ -481,7 +483,7 @@
       /* 消息通知 */
       .dropdown-badge,
       /* 用户名 */
-      .el-dropdown-link,
+      // .el-dropdown-link,
       /* 设置 */
       .set-icon {
         &:hover {
@@ -607,7 +609,8 @@ body[layout="vertical"] {
     // width: 54px;
     width: 74px;
   }
-  //74
+
+  // 74
 
   .sidebar-logo-container {
     height: 90px;
@@ -669,11 +672,12 @@ body[layout="vertical"] {
   /* 消息通知 */
   .dropdown-badge,
   /* 用户名 */
-  .el-dropdown-link,
+  // .el-dropdown-link,
   /* 设置 */
   .set-icon {
     &:hover {
-      background: #f6f6f6;
+      background: #1b275e;
+      border-radius: 10px;
     }
   }
 }

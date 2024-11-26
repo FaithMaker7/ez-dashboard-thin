@@ -123,11 +123,11 @@ onBeforeUnmount(() => {
       :is-active="pureApp.sidebar.opened"
       @toggleClick="toggleSideBar"
     />
-    <LaySidebarLeftCollapse
+    <!-- <LaySidebarLeftCollapse
       v-if="device !== 'mobile'"
       :is-active="pureApp.sidebar.opened"
       @toggleClick="toggleSideBar"
-    />
+    /> -->
   </div>
 </template>
 
@@ -135,11 +135,13 @@ onBeforeUnmount(() => {
 :deep(.el-loading-mask) {
   opacity: 0.45;
 }
+
 :deep(.el-text) {
   font-size: 16px;
 }
+
 :deep(.el-scrollbar__view) {
-  padding: 20px 0px 20px 0px;
+  padding: 20px 0;
   border-top: 2px solid #1b275e;
   border-bottom: 2px solid #1b275e;
 }

@@ -4,6 +4,9 @@
 
 .el-breadcrumb__inner,
 .el-breadcrumb__inner a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 32px;
   font-weight: 400 !important;
   color: #fff !important;

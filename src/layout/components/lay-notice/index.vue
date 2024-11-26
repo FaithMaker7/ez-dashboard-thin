@@ -23,14 +23,13 @@ const getLabel = computed(
     <span
       :class="[
         'dropdown-badge',
-        'navbar-bg-hover',
         'select-none',
-        Number(noticesNum) !== 0 && 'mr-[10px]'
+        Number(noticesNum) !== 0 && 'mr-[2px]'
       ]"
     >
       <el-badge :value="Number(noticesNum) === 0 ? '' : noticesNum" :max="99">
         <span class="header-notice-icon">
-          <IconifyIconOffline :icon="BellIcon" />
+          <IconifyIconOffline :icon="BellIcon" class="w-6 h-6" />
         </span>
       </el-badge>
     </span>

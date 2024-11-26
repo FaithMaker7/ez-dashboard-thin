@@ -7,7 +7,11 @@ import { useTranslationLang } from "@/layout/hooks/useTranslationLang";
 import LaySidebarFullScreen from "../lay-sidebar/components/SidebarFullScreen.vue";
 import LaySidebarBreadCrumb from "../lay-sidebar/components/SidebarBreadCrumb.vue";
 import LaySidebarTopCollapse from "../lay-sidebar/components/SidebarTopCollapse.vue";
+// import LaySidebarLeftCollapse from "../lay-sidebar/components/SidebarLeftCollapse.vue";
 import GlobalIcon from "@/assets/svg/global.svg?component";
+import Coin from "@/assets/svg/nav/coin.svg?component";
+import Add from "@/assets/svg/nav/add.svg?component";
+import Profile from "@/assets/svg/nav/profile.svg?component";
 // import GlobalizationIcon from "@/assets/svg/globalization.svg?component";
 import AccountSettingsIcon from "@iconify-icons/ri/user-settings-line";
 import LogoutCircleRLine from "@iconify-icons/ri/logout-circle-r-line";
@@ -52,12 +56,29 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
       <!-- <LaySearch id="header-search" /> -->
       <!-- balance -->
       <div class="balance-tag flex-c text-white universal-bg rounded-lg">
+        <Coin class="mr-2" />
         <span>95,298,482</span><span class="text-[#91AAF2]">POINTS</span>
+        <Add class="ml-2" />
       </div>
-      <div class="balance-tag flex-c text-white universal-bg rounded-lg">
-        <span>95,298,482</span><span class="text-[#91AAF2]">POINTS</span>
-      </div>
-      <!-- email -->
+      <!-- 显示用户和退出登录 -->
+      <el-dropdown trigger="click">
+        <span class="el-dropdown-link universal-bg rounded-lg select-none">
+          <!-- <img :src="userAvatar" :style="avatarsStyle" /> -->
+          <Profile class="mr-2" />
+          <p v-if="username" class="dark:text-white">{{ username }}</p>
+        </span>
+        <template #dropdown>
+          <el-dropdown-menu class="logout">
+            <el-dropdown-item @click="logout">
+              <IconifyIconOffline
+                :icon="LogoutCircleRLine"
+                style="margin: 5px"
+              />
+              {{ t("buttons.pureLoginOut") }}
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
       <!-- 国际化 -->
       <el-dropdown id="header-translation" trigger="click">
         <!-- <GlobalizationIcon
@@ -98,31 +119,14 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
       <!-- 全屏 -->
       <!-- <LaySidebarFullScreen id="full-screen" /> -->
       <!-- 消息通知 -->
-      <LayNotice id="header-notice" />
-      <!-- 退出登录 -->
-      <el-dropdown trigger="click">
-        <span class="el-dropdown-link navbar-bg-hover select-none">
-          <img :src="userAvatar" :style="avatarsStyle" />
-          <p v-if="username" class="dark:text-white">{{ username }}</p>
-        </span>
-        <template #dropdown>
-          <el-dropdown-menu class="logout">
-            <el-dropdown-item @click="logout">
-              <IconifyIconOffline
-                :icon="LogoutCircleRLine"
-                style="margin: 5px"
-              />
-              {{ t("buttons.pureLoginOut") }}
-            </el-dropdown-item>
-          </el-dropdown-menu>
-        </template>
-      </el-dropdown>
+      <LayNotice id="header-notice" class="text-white" />
+      <!-- 系统设置 -->
       <span
-        class="set-icon navbar-bg-hover"
+        class="set-icon text-white mr-2"
         :title="t('buttons.pureOpenSystemSet')"
         @click="onPanel"
       >
-        <IconifyIconOffline :icon="Setting" />
+        <IconifyIconOffline :icon="Setting" class="w-6 h-6" />
       </span>
     </div>
   </div>
@@ -157,8 +161,8 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
       align-items: center;
       justify-content: space-around;
       height: 48px;
-      padding: 10px;
-      color: #000000d9;
+      padding: 0px 14px 0px 14px;
+      color: #fff;
       cursor: pointer;
 
       p {
@@ -181,7 +185,7 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
 
 .translation {
   ::v-deep(.el-dropdown-menu__item) {
-    background: rgb(--color-primary);
+    background: rgb(var(--color-primary));
     padding: 5px 40px;
   }
 
@@ -222,8 +226,8 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
       );
 }
 .globalization-icon {
-  width: 64px;
-  height: 64px;
+  width: 54px;
+  height: 54px;
   border-radius: 999px;
   // @extend .universal-bg;
   background:
@@ -263,7 +267,7 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
 }
 
 .balance-tag {
-  width: 256px;
   height: 100%;
+  padding: 0px 14px 0px 14px;
 }
 </style>

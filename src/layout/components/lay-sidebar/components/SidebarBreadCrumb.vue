@@ -5,12 +5,15 @@ import { useRoute, useRouter } from "vue-router";
 import { ref, watch, onMounted, toRaw } from "vue";
 import { getParentPaths, findRouteByPath } from "@/router/utils";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
+import LaySidebarLeftCollapse from "../components/SidebarLeftCollapse.vue";
+import { useNav } from "@/layout/hooks/useNav";
 
 const route = useRoute();
 const levelList = ref([]);
 const router = useRouter();
 const routes: any = router.options.routes;
 const multiTags: any = useMultiTagsStoreHook().multiTags;
+const { device, pureApp, toggleSideBar } = useNav();
 
 const getBreadcrumb = (): void => {
   // 当前路由信息
@@ -112,6 +115,14 @@ watch(
         :key="item.path"
         class="!inline !items-stretch"
       >
+        <div class="w-[32px] h-[32px] mr-2">
+          <LaySidebarLeftCollapse
+            v-if="device !== 'mobile'"
+            :is-active="pureApp.sidebar.opened"
+            is-nav
+            @toggleClick="toggleSideBar"
+          />
+        </div>
         <a @click.prevent="handleLink(item)">
           {{ transformI18n(item.meta.title) }}
         </a>

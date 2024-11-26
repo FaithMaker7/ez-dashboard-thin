@@ -21,15 +21,15 @@ const themeColors = {
   },
   /* 亮白色 */
   light: {
-    subMenuActiveText: "#000000d9",
-    menuBg: "#fff",
+    menuBg: "#18204B",
+    menuText: "rgb(225 255 255 / 60%)",
     menuHover: "#f6f6f6",
-    subMenuBg: "#fff",
+    menuActiveBefore: "#4091f7",
+    menuTitleHover: "#80D5FF",
+    subMenuBg: "#18204B",
     subMenuActiveBg: "#e0ebf6",
-    menuText: "rgb(0 0 0 / 60%)",
-    sidebarLogo: "#fff",
-    menuTitleHover: "#000",
-    menuActiveBefore: "#4091f7"
+    subMenuActiveText: "#fff",
+    sidebarLogo: "#18204B"
   },
   /* 道奇蓝 */
   default: {

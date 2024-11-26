@@ -4,30 +4,52 @@ import { useI18n } from "vue-i18n";
 import { useGlobal } from "@pureadmin/utils";
 import { useNav } from "@/layout/hooks/useNav";
 
-import MenuFold from "@iconify-icons/ri/menu-fold-fill";
+import MenuFold from "@iconify-icons/ep/arrow-left-bold";
 
 interface Props {
   isActive: boolean;
+  isNav: boolean;
 }
 
-withDefaults(defineProps<Props>(), {
-  isActive: false
+const props = withDefaults(defineProps<Props>(), {
+  isActive: false,
+  isNav: false
 });
 
 const { t } = useI18n();
 const { tooltipEffect } = useNav();
 
 const iconClass = computed(() => {
-  return [
-    "ml-4",
-    "mb-1",
-    "w-[16px]",
-    "h-[16px]",
-    "inline-block",
-    "align-middle",
-    "cursor-pointer",
-    "duration-[100ms]"
-  ];
+  if (props.isNav) {
+    return [
+      "w-[14px]",
+      "h-[14px]",
+      "inline-block",
+      "text-white",
+      // "align-middle",
+      "cursor-pointer",
+      "duration-[100ms]"
+    ];
+  } else {
+    return [
+      "ml-4",
+      "mb-1",
+      "w-[16px]",
+      "h-[16px]",
+      "inline-block",
+      "align-middle",
+      "cursor-pointer",
+      "duration-[100ms]"
+    ];
+  }
+});
+
+const navClass = computed(() => {
+  if (props.isNav) {
+    return "!relative !h-[32px] flex-c !leading-8 rounded-sm";
+  } else {
+    return "";
+  }
 });
 
 const { $storage } = useGlobal<GlobalPropertiesApi>();
@@ -43,7 +65,7 @@ const toggleClick = () => {
 </script>
 
 <template>
-  <div class="left-collapse">
+  <div class="left-collapse" :class="[navClass]">
     <IconifyIconOffline
       v-tippy="{
         content: isActive
@@ -68,6 +90,6 @@ const toggleClick = () => {
   width: 100%;
   height: 40px;
   line-height: 40px;
-  box-shadow: 0 0 6px -3px var(--el-color-primary);
+  box-shadow: 0 0 6px -2px var(--el-color-primary);
 }
 </style>
