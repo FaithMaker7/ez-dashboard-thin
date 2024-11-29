@@ -55,14 +55,14 @@ const getSectionStyle = computed(() => {
     hideTabs.value && layout ? "padding-top: 48px;" : "",
     !hideTabs.value && layout
       ? showModel.value == "chrome"
-        ? "padding-top: 124px;" // 85
-        : "padding-top: 120px;" // 81
+        ? "padding-top: 172px;" // 85
+        : "padding-top: 168px;" // 81
       : "",
     hideTabs.value && !layout.value ? "padding-top: 48px;" : "",
     !hideTabs.value && !layout.value
       ? showModel.value == "chrome"
-        ? "padding-top: 124px;" // 85
-        : "padding-top: 120px;" // 81
+        ? "padding-top: 172px;" // 85
+        : "padding-top: 168px;" // 81
       : "",
     props.fixedHeader
       ? ""
@@ -128,7 +128,7 @@ const transitionMain = defineComponent({
               :view-style="{
                 display: 'flex',
                 flex: 'auto',
-                overflow: 'hidden',
+                // overflow: 'hidden',
                 'flex-direction': 'column'
               }"
             >
@@ -199,6 +199,7 @@ const transitionMain = defineComponent({
   position: relative;
   width: 100%;
   height: 100vh;
+  padding: 48px;
   overflow-x: hidden;
   background-color: rgb(var(--color-bg)) !important;
 
@@ -214,5 +215,9 @@ const transitionMain = defineComponent({
 
 .main-content {
   margin: 24px;
+}
+
+:deep(.el-scrollbar__view) {
+  width: 100%;
 }
 </style>

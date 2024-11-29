@@ -8,16 +8,19 @@
   /* 修改element-plus 样式 */
   --el-bg-color-overlay: #18204b; /* 背景色 */
   --el-border-color-light: #363636; /* 边框颜色 */
-  --el-color-primary-hover: #1b275e;
+  --el-color-primary-hover: #4b4b4d;
   // --el-menu-hover-bg-color: #1B275E;
-  --el-dropdown-menuItem-hover-fill: #1b275e; // 未生效
-  --el-dropdown-menuItem-hover-color: #1b275e; // 未生效
+  --el-dropdown-menuItem-hover-fill: #1b275e;
+  --el-dropdown-menuItem-hover-color: #1b275e;
+  // 输入框相关样式属性
+  --el-fill-color-blank: #001529; //背景色
+
   /* 基础颜色 - 使用 RGB 格式便于设置透明度 */
   --color-bg: 0, 21, 41; /* #001529 */
   --color-card-bg: 22, 31, 75; /* #162F4B */
   --color-primary: 24, 32, 75; /* #1890FF */
   --color-hoverBg: 27, 39, 94; /* #1B273E */
-  --color-norText: 145, 170, 242;
+  --color-norText: 163, 169, 217; /* #A3A9D7 */
   --color-smText: 218, 222, 242; /* #DADEF2 */
   --color-yellow: 255, 219, 41; /* #FFDB29 */
   --color-unit: 143, 150, 204; /* #8F96CC */
@@ -25,6 +28,35 @@
   --color-tag-green: 80, 229, 167; /* #50E5A7 */
   --color-error: 218, 41, 10; /* #DA290A */
   --color-hint: 27, 121, 245; /* #1B79F5 */
+
+  /* shadcn-vue的颜色配置 */
+  --background: 0 0% 100%; /* 白色 */
+  --foreground: 222.2 84% 4.9%; /* 黑色 */
+
+  --card: 0 0% 100%; /* 白色 */
+  --card-foreground: 222.2 84% 4.9%; /* 黑色 */
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+
+  --primary: 221.2 83.2% 53.3%; /* 蓝色 */
+  --primary-foreground: 210 40% 98%; /* 白色 */
+
+  --secondary: 210 40% 96.1%; /* 灰色 */
+  --secondary-foreground: 222.2 47.4% 11.2%; /* 黑色 */
+
+  --muted: 210 40% 96.1%; /* 灰色 */
+  --muted-foreground: 215.4 16.3% 46.9%; /* 灰色 */
+
+  --accent: 210 40% 96.1%; /* 灰色 */
+  --accent-foreground: 222.2 47.4% 11.2%;
+
+  --destructive: 0 84.2% 60.2%; /* 红色 */
+  --destructive-foreground: 210 40% 98%; /* 白色 */
+
+  --border: 214.3 31.8% 91.4%; /* 灰色 */
+  --input: 214.3 31.8% 91.4%; /* 灰色 */
+  --ring: 221.2 83.2% 53.3%; /* 蓝色 */
 
   /* 渐变和阴影 */
   --gradient-main: linear-gradient(90deg, #0b7ee1 0%, #01c89d 100%);

@@ -197,7 +197,7 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
-@import url("@/style/login.css");
+@import "@/style/login.css";
 </style>
 
 <style lang="scss" scoped>

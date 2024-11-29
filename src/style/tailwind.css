@@ -17,8 +17,14 @@
   .flex-col-start {
     @apply flex flex-col justify-around items-start;
   }
+  .flex-col-center {
+    @apply flex flex-col justify-center items-center;
+  }
 
   .navbar-bg-hover {
     @apply dark:text-white dark:hover:!bg-[#242424];
+  }
+  .card-bg {
+    @apply bg-custom-cardBg/90 p-6 rounded-lg;
   }
 }

@@ -1,11 +1,11 @@
 <template>
-  <div :class="sizeClass" class="outer text-white sm:border-5">
+  <div class="outer text-white sm:border-5">
     <div class="inner-box sm:border-3">
       <div class="cover">
         <Add class="w-3 h-3 sm:w-5 sm:h-5 xl:w-7 xl:h-7" />
-        <span class="text-[#A5FEEE] text-xs lg:text-sm ml-1 sm:ml-4"
-          >LOGIN</span
-        >
+        <span class="text-[#A5FEEE] text-xs lg:text-sm ml-1 sm:ml-4">{{
+          text
+        }}</span>
       </div>
     </div>
   </div>
@@ -17,15 +17,19 @@ const props = defineProps({
   size: {
     type: String,
     default: "nav"
+  },
+  text: {
+    type: String,
+    default: "LOGIN"
   }
 });
 
-const sizeClass = computed(() => {
-  return props.size === "login" ? "login-size" : "card-size";
-});
+// const sizeClass = computed(() => {
+//   return props.size === "login" ? "login-size" : "card-size";
+// });
 </script>
 <style lang="scss" scoped>
-@import url("../../style/func.scss");
+@import "../../style/func";
 
 .outer {
   position: relative;
@@ -73,16 +77,18 @@ const sizeClass = computed(() => {
     border-radius: 999px;
 
     .cover {
-      @include flex-center();
+      @include flex-center;
 
       z-index: 1;
       width: 100%;
       height: 100%;
+      padding: 10px 20px;
       background: rgb(255 255 255 / 15%);
       border-radius: 999px;
     }
   }
 }
+
 // 发光效果
 .outer::before {
   @include absolute-center;
@@ -109,6 +115,7 @@ const sizeClass = computed(() => {
   box-shadow: 0 0 30px hsl(155deg 74% 61%);
   opacity: 0.4;
 }
+
 // 星星装饰
 .outer::after {
   position: absolute;
@@ -134,17 +141,17 @@ const sizeClass = computed(() => {
   transform: rotate(-2deg) scale(0.95);
 }
 
-.card-size {
-  width: 10.042vw;
-  max-width: 212px;
+// .card-size {
+//   width: 10.042vw;
+//   max-width: 212px;
 
-  .cover {
-    padding: 10px 20px;
-  }
-}
+//   .cover {
+//     padding: 10px 20px;
+//   }
+// }
 
-.login-size {
-  width: 10.042vw;
-  max-width: 212px;
-}
+// .login-size {
+//   width: 10.042vw;
+//   max-width: 212px;
+// }
 </style>

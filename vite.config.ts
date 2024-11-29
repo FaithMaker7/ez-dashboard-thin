@@ -12,11 +12,14 @@ import {
 export default ({ mode }: ConfigEnv): UserConfigExport => {
   const { VITE_CDN, VITE_PORT, VITE_COMPRESSION, VITE_PUBLIC_PATH } =
     wrapperEnv(loadEnv(mode, root));
+  // console.log("Alias configuration:", alias); // 添加这行来检查别名配置
   return {
     base: VITE_PUBLIC_PATH,
     root,
     resolve: {
-      alias
+      alias: {
+        ...alias
+      }
     },
     // 服务端渲染
     server: {

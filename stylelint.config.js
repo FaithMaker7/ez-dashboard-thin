@@ -5,7 +5,8 @@ export default {
   extends: [
     "stylelint-config-standard",
     "stylelint-config-html/vue",
-    "stylelint-config-recess-order"
+    "stylelint-config-recess-order",
+    "stylelint-config-standard-scss"
   ],
   plugins: ["stylelint-scss", "stylelint-order", "stylelint-prettier"],
   overrides: [
@@ -23,6 +24,9 @@ export default {
     }
   ],
   rules: {
+    "scss/at-import-partial-extension": null,
+    "scss/at-import-no-partial-leading-underscore": null,
+    "import-notation": "string",
     "prettier/prettier": true,
     "selector-class-pattern": null,
     "no-descending-specificity": null,
@@ -43,6 +47,7 @@ export default {
       true,
       {
         ignoreAtRules: [
+          "extend", // 添加 extend
           "tailwind",
           "apply",
           "variants",
@@ -63,6 +68,27 @@ export default {
         ignore: ["after-comment", "first-nested"]
       }
     ],
+    "scss/at-rule-no-unknown": [
+      // 使用 scss 版本的规则
+      true,
+      {
+        ignoreAtRules: [
+          "extend", // 添加 extend
+          "tailwind",
+          "apply",
+          "variants",
+          "responsive",
+          "screen",
+          "function",
+          "if",
+          "each",
+          "include",
+          "mixin",
+          "use"
+        ]
+      }
+    ],
+    "scss/at-extend-no-missing-placeholder": null, // 禁用占位符选择器要求
     "unit-no-unknown": [true, { ignoreUnits: ["rpx"] }],
     "order/order": [
       [

@@ -4,6 +4,7 @@ export const customColors = {
     // 基础色系
     bg: "rgba(var(--color-bg),<alpha-value>)",
     cardBg: "rgba(var(--color-card-bg),<alpha-value>)",
+    primary: "rgba(var(--color-primary),<alpha-value>)",
     norText: "rgba(var(--color-norText),<alpha-value>)",
     smText: "rgba(var(--color-smText),<alpha-value>)",
     yellow: "rgba(var(--color-yellow),<alpha-value>)",
