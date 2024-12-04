@@ -8,13 +8,14 @@
 }
 
 .login-container {
-  width: 100vw;
+  width: 1700px;
   height: 100vh;
   max-width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 18rem;
   padding: 0 2rem;
+  margin: 0 auto;
 }
 
 .img {
@@ -32,10 +33,14 @@
   align-items: center;
   text-align: center;
   overflow: hidden;
+  min-width: 615px;
+  min-height: 755px;
 }
 
 .login-form {
-  width: 360px;
+  min-width: 615px;
+  min-height: 755px;
+  padding: 60px;
 }
 
 .avatar {

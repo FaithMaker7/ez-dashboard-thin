@@ -18,6 +18,38 @@
   padding: 0 !important;
 }
 
+// 搜索框样式
+.el-input {
+  height: 65px;
+  font-size: 18px;
+  background-color: rgb(0 21 41 / 30%);
+  border-radius: 10px;
+  box-shadow: inset 0 0 20px 0 rgb(0 0 0 / 20%);
+}
+
+.el-input__wrapper {
+  // 设置与#001529背景色适配的内阴影，制造搜索框内凹效果
+  background-color: rgb(0 21 41 / 30%);
+  border-radius: 10px;
+  box-shadow: inset 0 0 20px 0 rgb(0 0 0 / 40%);
+}
+
+.el-input__inner {
+  color: #424d85;
+}
+
+.el-input-group--append > .el-input__wrapper {
+  box-shadow: none;
+}
+
+.el-input-group__append {
+  padding: 20px;
+  overflow: hidden;
+  background-color: rgb(0 21 41 / 30%);
+  border-radius: 10px;
+  box-shadow: none;
+}
+
 .is-dark {
   z-index: 9999 !important;
 }

@@ -22,6 +22,12 @@ export type UserResult = {
   };
 };
 
+export type RegisterResult = {
+  code: number;
+  success: boolean;
+  data: string;
+};
+
 export type RefreshTokenResult = {
   success: boolean;
   data: {
@@ -37,6 +43,11 @@ export type RefreshTokenResult = {
 /** 登录 */
 export const getLogin = (data?: object) => {
   return http.request<UserResult>("post", "/login", { data });
+  // return http.request<UserResult>("post", "/login", { data, baseURL: "Long" }); // 最后一个对象配置baseURL可覆盖环境变量中的baseURL
+};
+/** 注册 */
+export const getRegister = (data?: object) => {
+  return http.request<RegisterResult>("post", "/register", { data });
 };
 
 /** 刷新`token` */

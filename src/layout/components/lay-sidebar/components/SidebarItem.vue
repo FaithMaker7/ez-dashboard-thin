@@ -57,7 +57,8 @@ const getSubMenuIconStyle = computed((): CSSProperties => {
         ? "0 17px 0 0"
         : isCollapse.value
           ? "0 auto"
-          : "0 17px 0 0"
+          : "0 17px 0 0",
+    color: "#A3A9D9"
   };
 });
 

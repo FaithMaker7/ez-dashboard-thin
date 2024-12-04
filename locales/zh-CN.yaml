@@ -91,11 +91,28 @@ status:
   pureNoNotify: 暂无通知
   pureNoTodo: 暂无待办
 login:
-  pureUsername: 账号
+  pureUsername: 邮箱账号
   purePassword: 密码
   pureLogin: 登录
   pureLoginSuccess: 登录成功
   pureLoginFail: 登录失败
-  pureUsernameReg: 请输入账号
+  pureUsernameReg: 请输入邮箱账号
+  pureUsernameRuleReg: 请输入正确的邮箱格式
   purePassWordReg: 请输入密码
   purePassWordRuleReg: 密码格式应为8-18位数字、字母、符号的任意两种组合
+signup:
+  pureUsername: 账号
+  purePassword: 密码
+  pureSignup: 注册
+  pureSignupSuccess: 注册成功
+  pureSignupFail: 注册失败
+  pureUsernameReg: 请输入邮箱账号
+  pureUsernameRuleReg: 请输入正确的邮箱格式
+  purePassWordReg: 请输入密码
+  purePassWordRuleReg: 密码格式应为8-18位字符,要包含字母和数字
+forget:
+  pureForget: 重置密码
+  purePlaceholder: 请输入邮箱账号
+  pureForgetSubmit: 提交
+  pureForgetTip: 提交后您将收到一封电子邮件，其中包含下一步操作的说明
+  pureForgetBack: 返回登录

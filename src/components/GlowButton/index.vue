@@ -3,7 +3,7 @@
     <div class="inner-box sm:border-3">
       <div class="cover">
         <Add class="w-3 h-3 sm:w-5 sm:h-5 xl:w-7 xl:h-7" />
-        <span class="text-[#A5FEEE] text-xs lg:text-sm ml-1 sm:ml-4">{{
+        <span class="text-[#A5FEEE] text-xs sm:text-sm ml-1 sm:ml-4">{{
           text
         }}</span>
       </div>
@@ -128,7 +128,7 @@ const props = defineProps({
   content: "";
   background: url("../../assets/svg/decor.svg") no-repeat center/cover;
   opacity: 0.3;
-  transition: all 0.3s ease;
+  transition: all 0.1s ease;
 }
 
 .outer:hover::after {

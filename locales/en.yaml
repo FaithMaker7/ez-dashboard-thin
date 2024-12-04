@@ -91,11 +91,28 @@ status:
   pureNoNotify: No Notify
   pureNoTodo: No Todo
 login:
-  pureUsername: Username
+  pureUsername: Email Username
   purePassword: Password
   pureLogin: Login
   pureLoginSuccess: Login Success
   pureLoginFail: Login Fail
   pureUsernameReg: Please enter username
+  pureUsernameRuleReg: Please enter the correct email format
   purePassWordReg: Please enter password
   purePassWordRuleReg: The password format should be any combination of 8-18 digits
+signup:
+  pureUsername: Username
+  purePassword: Password
+  pureSignup: Sign Up
+  pureSignupSuccess: Sign Up Success
+  pureSignupFail: Sign Up Fail
+  pureUsernameReg: Please enter username
+  pureUsernameRuleReg: Please enter the correct email format
+  purePassWordReg: Please enter password
+  purePassWordRuleReg: The password format should be 8-18 characters long and should include letters and numbers.
+forget:
+  pureForget: Reset Password
+  purePlaceholder: Please enter email
+  pureForgetSubmit: Submit
+  pureForgetTip: After submitting you will receive an email with instructions on what to do next
+  pureForgetBack: Back to Login

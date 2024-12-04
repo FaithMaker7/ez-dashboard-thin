@@ -59,23 +59,5 @@ const handleInput = (value: string) => {
   align-items: center;
   width: 100%;
   height: 100%;
-
-  :deep(.el-input) {
-    height: 100%;
-    background-color: #001529;
-    border-radius: 10px;
-  }
-
-  :deep(.el-input-group--append > .el-input__wrapper) {
-    box-shadow: none;
-  }
-
-  :deep(.el-input-group__append) {
-    padding: 20px;
-    overflow: hidden;
-    background-color: #001529;
-    border-radius: 10px;
-    box-shadow: none;
-  }
 }
 </style>

@@ -110,11 +110,7 @@ watch(
 <template>
   <el-breadcrumb class="!leading-[50px] select-none" separator="/">
     <transition-group name="breadcrumb">
-      <el-breadcrumb-item
-        v-for="item in levelList"
-        :key="item.path"
-        class="!inline !items-stretch"
-      >
+      <div class="flex-c">
         <div class="w-[32px] h-[32px] mr-2">
           <LaySidebarLeftCollapse
             v-if="device !== 'mobile'"
@@ -123,10 +119,18 @@ watch(
             @toggleClick="toggleSideBar"
           />
         </div>
-        <a @click.prevent="handleLink(item)">
-          {{ transformI18n(item.meta.title) }}
-        </a>
-      </el-breadcrumb-item>
+        <el-breadcrumb-item v-for="item in levelList" :key="item.path" class="">
+          <a @click.prevent="handleLink(item)">
+            {{ transformI18n(item.meta.title) }}
+          </a>
+        </el-breadcrumb-item>
+      </div>
     </transition-group>
   </el-breadcrumb>
 </template>
+
+<style lang="scss" scoped>
+:deep(.el-breadcrumb__separator) {
+  font-size: 24px;
+}
+</style>

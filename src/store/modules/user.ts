@@ -9,8 +9,10 @@ import {
 } from "../utils";
 import {
   type UserResult,
+  type RegisterResult,
   type RefreshTokenResult,
   getLogin,
+  getRegister,
   refreshTokenApi
 } from "@/api/user";
 import { useMultiTagsStoreHook } from "./multiTags";
@@ -70,6 +72,18 @@ export const useUserStore = defineStore({
         getLogin(data)
           .then(data => {
             if (data?.success) setToken(data.data);
+            resolve(data);
+          })
+          .catch(error => {
+            reject(error);
+          });
+      });
+    },
+    /** 注册 */
+    async registerByUsername(data) {
+      return new Promise<RegisterResult>((resolve, reject) => {
+        getRegister(data)
+          .then(data => {
             resolve(data);
           })
           .catch(error => {

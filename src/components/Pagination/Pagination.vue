@@ -44,7 +44,7 @@ import { Button } from "shadcnUi/components/ui/button";
           as-child
         >
           <Button
-            class="w-[50px] h-[50px] xl:w-[56px] xl:h-[56px] bg-transparent btn-border p-0 text-[#6B77B2] geo-semibold fs-20 rounded-lg hover:bg-[#2D3964]"
+            class="w-[50px] h-[50px] xl:w-[56px] xl:h-[56px] bg-transparent btn-border p-0 text-[#6B77B2] geo-semibold fs-20 rounded-lg"
             :class="item.value === page ? 'selected' : ''"
           >
             {{ item.value }}

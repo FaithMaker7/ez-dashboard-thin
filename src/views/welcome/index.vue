@@ -25,6 +25,7 @@ defineOptions({
 });
 const levelIndex = ref(1); // 价格等级
 const vipSystem = [
+  { level: 0, free: "0" },
   { level: 1, free: "1" },
   { level: 2, free: "4" },
   { level: 3, free: "5" },
@@ -89,7 +90,7 @@ const clientKey = ref("");
               </template>
               <template #append>
                 <Refresh class="w-6 h-6" />
-                <el-divider direction="vertical" />
+                <el-divider direction="vertical" class="border-l-[#2C3E96]" />
                 <Copy class="w-6 h-6" />
               </template>
             </ReInput>
@@ -165,7 +166,7 @@ const clientKey = ref("");
 </template>
 <style lang="scss">
 .card {
-  @apply flex-col-start bg-custom-cardBg/40 rounded-lg;
+  @apply flex-col-as bg-custom-cardBg/40 rounded-lg;
 }
 
 .balance {
