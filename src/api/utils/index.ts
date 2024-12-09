@@ -53,7 +53,7 @@ class BaseUrlManager {
     console.log("MODE", import.meta.env.MODE);
     console.log("VITE_MOCK", import.meta.env.VITE_MOCK);
     if (
-      import.meta.env.MODE === "development" &&
+      // import.meta.env.MODE === "development" &&
       toBoolean(import.meta.env.VITE_MOCK)
     ) {
       // 如果开发环境开启了mock，则使用mock服务

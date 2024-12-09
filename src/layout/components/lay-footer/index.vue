@@ -6,9 +6,9 @@ const TITLE = getConfig("Title");
 
 <template>
   <footer
-    class="layout-footer text-[rgba(0,0,0,0.6)] dark:text-[rgba(220,220,242,0.8)]"
+    class="layout-footer text-custom-norText dark:text-[rgba(220,220,242,0.8)]"
   >
-    Copyright © 2020-present
+    Copyright © 2021-present
     <a
       class="hover:text-primary"
       href="https://github.com/pure-admin"

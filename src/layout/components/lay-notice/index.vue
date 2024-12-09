@@ -51,7 +51,7 @@ const getLabel = computed(
               <el-tab-pane :label="getLabel(item)" :name="`${item.key}`">
                 <el-scrollbar max-height="330px">
                   <div class="noticeList-container">
-                    <NoticeList :list="item.list" :emptyText="item.emptyText" />
+                    <!-- <NoticeList :list="item.list" :emptyText="item.emptyText" /> -->
                   </div>
                 </el-scrollbar>
               </el-tab-pane>

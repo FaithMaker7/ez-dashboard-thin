@@ -19,6 +19,8 @@ export interface DataInfo<T> {
   roles?: Array<string>;
   /** 当前登录用户的按钮级别权限 */
   permissions?: Array<string>;
+  /** 用户通知 */
+  notice?: Array<object>;
 }
 
 export const userKey = "user-info";
@@ -138,4 +140,19 @@ export const hasPerms = (value: string | Array<string>): boolean => {
     ? permissions.includes(value)
     : isIncludeAllChildren(value, permissions);
   return isAuths ? true : false;
+};
+
+/** 获取用户通知 */
+export const getUserNotice = () => {
+  return storageLocal().getItem<DataInfo<number>>(userKey)?.notice ?? [];
+};
+
+/** 设置用户通知 */
+export const setUserNotice = (data: Array<object>) => {
+  // 在原有的用户信息基础上，添加通知信息
+  const userInfo = storageLocal().getItem<DataInfo<number>>(userKey);
+  if (userInfo) {
+    const newUserInfo = Object.assign({}, userInfo, { notice: data });
+    storageLocal().setItem(userKey, newUserInfo);
+  }
 };

@@ -320,7 +320,8 @@ onUnmounted(() => removeMatchMedia);
 <template>
   <LayPanel>
     <div class="p-5">
-      <p :class="pClass">{{ t("panel.pureOverallStyle") }}</p>
+      <!-- 日夜间模式配置 -->
+      <!-- <p :class="pClass">{{ t("panel.pureOverallStyle") }}</p>
       <Segmented
         resize
         class="select-none"
@@ -336,9 +337,11 @@ onUnmounted(() => removeMatchMedia);
             theme.index === 2 && watchSystemThemeChange();
           }
         "
-      />
+      /> -->
 
-      <p :class="['mt-5', pClass]">{{ t("panel.pureThemeColor") }}</p>
+      <!-- 主题色配置 -->
+
+      <!-- <p :class="['mt-5', pClass]">{{ t("panel.pureThemeColor") }}</p>
       <ul class="theme-color">
         <li
           v-for="(item, index) in themeColors"
@@ -355,7 +358,7 @@ onUnmounted(() => removeMatchMedia);
             <IconifyIconOffline :icon="Check" />
           </el-icon>
         </li>
-      </ul>
+      </ul> -->
 
       <p :class="['mt-5', pClass]">{{ t("panel.pureLayoutModel") }}</p>
       <ul class="pure-theme">

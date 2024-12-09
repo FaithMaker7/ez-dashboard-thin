@@ -101,8 +101,8 @@ import { Button } from "shadcnUi/components/ui/button";
 
 .selected {
   position: relative;
-  color: rgb(var(--color-tag-green) 1);
-  border: 2px solid rgb(var(--color-tag-green) 1);
+  color: rgb(var(--color-tag-green));
+  border: 2px solid rgb(var(--color-tag-green));
 
   // scale: 1.05;
   &::before {

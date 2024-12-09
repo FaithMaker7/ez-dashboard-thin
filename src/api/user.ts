@@ -40,6 +40,12 @@ export type RefreshTokenResult = {
   };
 };
 
+export type UserNoticeResult = {
+  code: number;
+  success: boolean;
+  data: Array<object>;
+};
+
 /** 登录 */
 export const getLogin = (data?: object) => {
   return http.request<UserResult>("post", "/login", { data });
@@ -53,4 +59,9 @@ export const getRegister = (data?: object) => {
 /** 刷新`token` */
 export const refreshTokenApi = (data?: object) => {
   return http.request<RefreshTokenResult>("post", "/refresh-token", { data });
+};
+
+/** 获取用户通知 */
+export const getUserNotice = (data?: object) => {
+  return http.request<UserNoticeResult>("get", "v1/notice/getNotice", { data });
 };

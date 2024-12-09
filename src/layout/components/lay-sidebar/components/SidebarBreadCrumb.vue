@@ -110,7 +110,7 @@ watch(
 <template>
   <el-breadcrumb class="!leading-[50px] select-none" separator="/">
     <transition-group name="breadcrumb">
-      <div class="flex-c">
+      <div :key="'breadcrumb-container'" class="flex-c">
         <div class="w-[32px] h-[32px] mr-2">
           <LaySidebarLeftCollapse
             v-if="device !== 'mobile'"

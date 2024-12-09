@@ -11,12 +11,20 @@ import {
   type UserResult,
   type RegisterResult,
   type RefreshTokenResult,
+  type UserNoticeResult,
   getLogin,
   getRegister,
+  getUserNotice,
   refreshTokenApi
 } from "@/api/user";
 import { useMultiTagsStoreHook } from "./multiTags";
-import { type DataInfo, setToken, removeToken, userKey } from "@/utils/auth";
+import {
+  type DataInfo,
+  setToken,
+  removeToken,
+  userKey,
+  setUserNotice
+} from "@/utils/auth";
 
 export const useUserStore = defineStore({
   id: "pure-user",
@@ -35,7 +43,9 @@ export const useUserStore = defineStore({
     // 是否勾选了登录页的免登录
     isRemembered: false,
     // 登录页的免登录存储几天，默认7天
-    loginDay: 7
+    loginDay: 7,
+    // 用户通知
+    notice: storageLocal().getItem<DataInfo<number>>(userKey)?.notice ?? []
   }),
   actions: {
     /** 存储头像 */
@@ -72,6 +82,8 @@ export const useUserStore = defineStore({
         getLogin(data)
           .then(data => {
             if (data?.success) setToken(data.data);
+            // 获取用户通知
+            // this.getUserNotice();
             resolve(data);
           })
           .catch(error => {
@@ -100,6 +112,19 @@ export const useUserStore = defineStore({
       useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
       resetRouter();
       router.push("/login");
+    },
+    /** 获取用户通知 */
+    async getUserNotice() {
+      return new Promise<UserNoticeResult>((resolve, reject) => {
+        getUserNotice()
+          .then(data => {
+            if (data?.success) setUserNotice(data.data);
+            resolve(data);
+          })
+          .catch(error => {
+            reject(error);
+          });
+      });
     },
     /** 刷新`token` */
     async handRefreshToken(data) {
