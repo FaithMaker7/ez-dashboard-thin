@@ -65,6 +65,7 @@ class PureHttp {
       async (config: PureHttpRequestConfig): Promise<any> => {
         // 开启进度条动画
         NProgress.start();
+        console.log("请求config:", config);
         // 确保每次请求都使用最新的 baseURL
         // config.baseURL = baseUrlManager.getBaseUrl();
         // 优先判断post/get等方法是否传入回调，否则执行初始化设置等回调

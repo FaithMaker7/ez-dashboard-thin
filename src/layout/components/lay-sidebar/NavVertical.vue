@@ -54,6 +54,7 @@ function getSubMenuData() {
     path,
     usePermissionStoreHook().wholeMenus
   );
+  // console.log(usePermissionStoreHook().wholeMenus;)
   // 当前路由的父级路由信息
   const parenetRoute = findRouteByPath(
     parentPathArr[0] || path,

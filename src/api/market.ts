@@ -8,18 +8,21 @@ export type GoodsListResult = {
     page: number;
     pageSize: number;
     totalPage: number;
+    total: number;
   };
 };
-export const getGoodsList = (data?: object) => {
-  return http.request<GoodsListResult>("get", "/mock/goodsList", { data });
+export const getGoodsList = (params?: object) => {
+  return http.request<GoodsListResult>("get", "goodsList", { params });
 };
 
 export type CateListResult = {
   code: number;
   success: boolean;
-  data: Array<object>;
+  data: {
+    list: Array<String>;
+  };
 };
 
 export const getCateList = (data?: object) => {
-  return http.request<CateListResult>("get", "/mock/cateList", { data });
+  return http.request<CateListResult>("get", "cateList", { data });
 };

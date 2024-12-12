@@ -14,6 +14,11 @@
   .flex-bc {
     @apply flex justify-between items-center;
   }
+
+  .flex-bs {
+    @apply flex justify-between items-start;
+  }
+
   .flex-sc {
     @apply flex justify-start items-center;
   }

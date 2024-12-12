@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import { useDark, useECharts } from "@pureadmin/utils";
-import { type PropType, ref, computed, watch, nextTick } from "vue";
+import {
+  type PropType,
+  ref,
+  computed,
+  watch,
+  nextTick,
+  onMounted,
+  onBeforeUnmount
+} from "vue";
 
 const props = defineProps({
   requireData: {
@@ -18,7 +26,7 @@ const { isDark } = useDark();
 const theme = computed(() => (isDark.value ? "dark" : "light"));
 
 const chartRef = ref();
-const { setOptions } = useECharts(chartRef, {
+const { setOptions, resize } = useECharts(chartRef, {
   theme
 });
 
@@ -181,6 +189,21 @@ watch(
     immediate: true
   }
 );
+
+// 添加 resize 观察器
+onMounted(() => {
+  const observer = new ResizeObserver(() => {
+    resize();
+  });
+
+  if (chartRef.value) {
+    observer.observe(chartRef.value);
+  }
+
+  onBeforeUnmount(() => {
+    observer.disconnect();
+  });
+});
 </script>
 
 <template>

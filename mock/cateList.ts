@@ -1,4 +1,5 @@
 import { defineFakeRoute } from "vite-plugin-fake-server/client";
+import { isAllEmpty } from "@pureadmin/utils";
 export default defineFakeRoute([
   {
     url: "/mock/goodsList",
@@ -7,18 +8,41 @@ export default defineFakeRoute([
     response: ({ query }) => {
       const pageNum = Number(query.pageNum || 1);
       const pageSize = Number(query.pageSize || 10);
+      const category = query.category || "All Service";
+      // 先根据分类筛选数据
+      let filteredData =
+        category && category !== "All Service"
+          ? fakeData.filter(item => item.groups === category)
+          : fakeData;
       const start = (pageNum - 1) * pageSize;
       const end = start + pageSize;
-      return {
-        code: 200,
-        success: true,
-        data: {
-          list: fakeData.slice(start, end),
-          page: Number(pageNum),
-          pageSize: Number(pageSize),
-          totalPage: Math.ceil(fakeData.length / pageSize)
-        }
-      };
+      // 如果query为空就默认返回一页数据
+      if (isAllEmpty(query)) {
+        return {
+          code: 200,
+          success: true,
+          data: {
+            list: fakeData.slice(0, pageSize),
+            page: 1,
+            pageSize: pageSize,
+            totalPage: Math.ceil(fakeData.length / pageSize),
+            total: fakeData.length
+          }
+        };
+      } else {
+        return {
+          code: 200,
+          success: true,
+          query: query,
+          data: {
+            list: filteredData.slice(start, end),
+            page: Number(pageNum),
+            pageSize: Number(pageSize),
+            totalPage: Math.ceil(filteredData.length / pageSize),
+            total: filteredData.length
+          }
+        };
+      }
     }
   },
   // 获取数据分类的接口
@@ -30,7 +54,7 @@ export default defineFakeRoute([
         code: 200,
         success: true,
         data: {
-          list: ["All Service", "Recaptcha", "DataDome", "Akamai"]
+          list: ["All Service", "reCAPTCHA", "DataDome", "Akamai"]
         }
       };
     }

@@ -12,7 +12,7 @@ export default {
     {
       path: "/market/index",
       name: "market",
-      component: () => import("@/views/market/index.vue"),
+      component: () => import("@/views/market/market.vue"),
       meta: {
         title: $t("menus.pureMarket")
       }

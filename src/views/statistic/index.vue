@@ -55,7 +55,7 @@ const formatTypeList = typeList.map(item => ({
           />
         </div>
       </div>
-      <div class="w-full bg-custom-cardBg/50 p-4">
+      <div class="flex-bs bg-custom-cardBg/50 p-4">
         <ChartBar :requireData="barChartData[curWeek].requireData" />
       </div>
     </div>

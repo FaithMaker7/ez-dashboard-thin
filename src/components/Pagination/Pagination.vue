@@ -1,4 +1,5 @@
 <script setup>
+import { ref, computed } from "vue";
 import {
   Pagination,
   PaginationEllipsis,
@@ -11,6 +12,24 @@ import {
 } from "shadcnUi/components/ui/pagination";
 
 import { Button } from "shadcnUi/components/ui/button";
+const props = defineProps({
+  // 总条目数
+  total: {
+    type: Number,
+    required: true
+  },
+  // 每页显示条数
+  perPage: {
+    type: Number,
+    default: 10
+  },
+  // 显示的页码按钮数量
+  siblingCount: {
+    type: Number,
+    default: 1
+  }
+});
+const emit = defineEmits(["page-change"]);
 // 添加响应式的当前页码
 // const currentPage = ref(1);
 
@@ -25,10 +44,10 @@ import { Button } from "shadcnUi/components/ui/button";
 <template>
   <Pagination
     v-slot="{ page }"
-    :total="100"
-    :sibling-count="1"
+    :total="total"
+    :sibling-count="siblingCount"
     show-edges
-    :default-page="1"
+    @update:page="$emit('page-change', $event)"
   >
     <PaginationList v-slot="{ items }" class="flex items-center gap-1">
       <!-- <PaginationFirst :class="'btn-bg text-white'" /> -->

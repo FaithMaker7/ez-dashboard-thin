@@ -1,7 +1,7 @@
 <!-- eslint-disable @typescript-eslint/no-unused-vars -->
 <template>
   <div ref="btnBox">
-    <Button class="default-btn full-size flex-row-center">
+    <Button class="default-btn full-size flex-c">
       <!-- :class="customClass" -->
       <span
         class="text-xs xsm:text-sm 2xl:text-base geo-semiBold text-[#7EE5CC]"

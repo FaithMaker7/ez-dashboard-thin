@@ -2,9 +2,9 @@
 . "$(dirname "$0")/_/husky.sh"
 . "$(dirname "$0")/common.sh"
 
-[ -n "$CI" ] && exit 0
+[ -n "$CI" ] && exit 0 # CI 环境跳过检查
 
-PATH="/usr/local/bin:$PATH"
+PATH="/usr/local/bin:$PATH" # 添加本地bin目录到PATH
 
 # Perform lint check on files in the staging area through .lintstagedrc configuration
 pnpm exec lint-staged
