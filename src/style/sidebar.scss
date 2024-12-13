@@ -587,7 +587,9 @@
 
     .sidebar-container {
       z-index: 2001;
-      width: $sideBarWidth;
+
+      // width: $sideBarWidth;
+      width: 280px;
       transition: transform var(--pure-transition-duration);
     }
 

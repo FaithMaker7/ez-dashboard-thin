@@ -2,7 +2,7 @@
   <div class="outer text-white sm:border-5">
     <div class="inner-box sm:border-3">
       <div class="cover">
-        <Add class="w-3 h-3 sm:w-5 sm:h-5 xl:w-7 xl:h-7" />
+        <Add class="scale-75 lg:scale-100" />
         <span class="text-[#A5FEEE] text-xs sm:text-sm ml-1 sm:ml-4">{{
           text
         }}</span>
@@ -78,11 +78,11 @@ const props = defineProps({
 
     .cover {
       @include flex-center;
+      @apply p-1;
 
       z-index: 1;
       width: 100%;
       height: 100%;
-      padding: 10px 20px;
       background: rgb(255 255 255 / 15%);
       border-radius: 999px;
     }

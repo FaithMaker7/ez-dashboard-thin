@@ -3,30 +3,32 @@
     class="contact-card relative flex flex-col justify-around items-center sm:flex-row sm:justify-between w-[100%] h-[100%] mx-auto mt-[20px] p-3"
   >
     <div
-      class="tag w-[52px] h-[52px] sm:w-[82px] sm:h-[82px] rounded-full z-10 border-[#E65FD1] border-4 flex-c"
+      class="tag w-[52px] h-[52px] xs:w-[60px] xs:h-[60px] sm:w-[82px] sm:h-[82px] rounded-full z-10 border-[#E65FD1] border-4 flex-c"
     >
       <component
         :is="iconSelector()"
-        class="w-6 h-6 sm:w-[44px] sm:h-[44px]"
+        class="scale-75 sm:scale-100"
         :class="iconStyle"
       />
     </div>
 
     <div
-      class="right w-[80%] lg:w-[100%] flex flex-col items-end lg:flex-row lg:!justify-between lg:items-center ml-[20px] sm:ml-[90px] lg:ml-[70px]"
+      class="right w-[90%] md:w-[100%] mx-auto ml-8 flex-c gap-2 sm:gap-6 md:gap-10"
     >
-      <div class="text text-white z-10">
-        <p class="text-lg md:text-2xl lg:leading-10 geo-medium">
+      <div class="text w-[60%] text-white z-10">
+        <p class="text-xs sm:text-base md:text-lg lg:leading-10">
           {{ title }}
         </p>
         <p
           v-if="dec !== ''"
-          class="text-sm md:text-lg lg:text-2xl lg:mt-[16px] lg:leading-10 geo-medium text-custom-smText"
+          class="text-sm md:text-lg lg:text-2xl lg:mt-[16px] lg:leading-10 text-custom-smText"
         >
           {{ dec }}
         </p>
       </div>
-      <div class="w-[65%] sm:w-[50%] h-[45px] lg:w-[260px] lg:h-[72px] z-20">
+      <div
+        class="w-[100px] h-[45px] md:w-[180px] lg:w-[260px] lg:h-[72px] z-20"
+      >
         <GraButton :text="btnText" is-square />
       </div>
     </div>

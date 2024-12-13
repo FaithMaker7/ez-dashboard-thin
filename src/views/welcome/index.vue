@@ -1,16 +1,19 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useNav } from "@/layout/hooks/useNav";
 // 组件
 import GlowButton from "@/components/GlowButton/index.vue";
 import ShadProgress from "@/components/ShadProgress/index.vue";
 import NavButton from "@/components/NavButton/index.vue";
 import ContactCard from "@/components/ContactCard/index.vue";
+// import ReText from "@/components/ReText";
 import { Switch } from "shadcnUi/components/ui/switch";
 import { ChartBar } from "@/components/Charts";
 import ReInput from "@/components/ReInput/index.vue";
 import ReTable from "@/components/ReTable/index.vue";
 import Pagination from "@/components/Pagination/Pagination.vue";
 import NoData from "@/components/NoData/index.vue";
+import ReText from "@/components/ReText";
 // 图标
 import Vip from "@/assets/svg/dashboard/vip.svg?component";
 import Logo from "@/assets/svg/dashboard/recaptcha-logo.svg?component";
@@ -23,6 +26,7 @@ import { typeList, barChartData } from "@/components/Charts/data";
 defineOptions({
   name: "Welcome"
 });
+const { tooltipEffect } = useNav();
 const levelIndex = ref(1); // 价格等级
 const vipSystem = [
   { level: 0, free: "0" },
@@ -45,19 +49,22 @@ const clientKey = ref("");
 
 <template>
   <div>
-    <div class="flex-c gap-4 justify-between">
+    <div
+      class="flex flex-col lg:flex-row lg:justify-between lg:items-center md:gap-4 gap-2"
+    >
       <!-- 余额卡片 -->
       <div class="balance card">
-        <p class="text-base text-white">BALANCE</p>
-        <p class="mt-6 text-white">
-          <span class="text-5xl">95,298,482</span>
+        <p class="text-sm sm:text-base text-white">BALANCE</p>
+        <p class="sm:mt-6 text-white">
+          <span class="text-4xl sm:text-5xl">95,298,482</span>
           <span class="text-custom-norText align-top ml-1">POINTS</span>
         </p>
-        <div class="vip-progress mt-7">
+        <div class="vip-progress sm:mt-7">
           <div>
             <div class="level flex-c">
-              <Vip class="w-8 h-6 mr-2" />
-              <span class="text-custom-yellow align-bottom leading-6"
+              <Vip class="w-12 sm:w-8 mr-2" />
+              <span
+                class="text-custom-yellow align-bottom leading-6 whitespace-nowrap"
                 >VIP {{ levelIndex }}</span
               >
               <div class="tips text-white ml-8">
@@ -74,9 +81,12 @@ const clientKey = ref("");
             />
           </div>
         </div>
-        <div class="btn-box flex-c mt-7">
-          <GlowButton :size="'card'" />
-          <NavButton :text="'VIEW PAYMENT HISTORY'" class="nav-btn ml-4" />
+        <div class="btn-box xs:flex xs:justify-center xs:items-center xs:mt-7">
+          <GlowButton class="w-[60%]" />
+          <NavButton
+            :text="'VIEW PAYMENT HISTORY'"
+            class="nav-btn mt-4 xs:mt-0"
+          />
         </div>
       </div>
       <!-- API卡片 -->
@@ -89,16 +99,16 @@ const clientKey = ref("");
                 <Key class="w-6 h-6" />
               </template>
               <template #append>
-                <Refresh class="w-6 h-6" />
+                <Refresh class="w-6 h-6 scale-50 xs:scale-100" />
                 <el-divider direction="vertical" class="border-l-[#2C3E96]" />
-                <Copy class="w-6 h-6" />
+                <Copy class="w-6 h-6 scale-50 xs:scale-100" />
               </template>
             </ReInput>
           </div>
         </div>
         <div class="w-full h-[60%] mt-6 p-6">
           <p class="text-base text-custom-norText">HOW TO USE OUR API?</p>
-          <p class="text-3xl text-white mt-2">
+          <p class="text-xl md:text-3xl text-white mt-2">
             You can use our api with your key
           </p>
           <NavButton :text="'VIEW THE DOCUMENTATION'" class="nav-btn mt-6" />
@@ -120,14 +130,21 @@ const clientKey = ref("");
         <el-dropdown
           id="header-translation"
           trigger="click"
-          class="w-[25%] h-[50px] flex-c bg-custom-bg rounded-lg"
+          class="w-[60%] sm:w-[40%] xl:w-[30%] h-[50px] flex-c bg-custom-bg rounded-lg"
         >
           <!-- <GlobalizationIcon
             class="navbar-bg-hover w-[40px] h-[48px] p-[11px] cursor-pointer outline-none"
           /> -->
           <div class="flex-c">
             <Logo class="w-6 h-6 rounded-full" />
-            <span class="text-white text-xl ml-2">FuncaptchaTaskProxyless</span>
+            <ReText
+              :tippyProps="{
+                theme: tooltipEffect
+              }"
+              class="!w-[90px] xs:!w-[auto] !text-white !text-xs !ml-2"
+            >
+              FuncaptchaTaskProxyless
+            </ReText>
             <DownArrow class="flex-c ml-8" />
           </div>
           <template #dropdown>
@@ -141,7 +158,7 @@ const clientKey = ref("");
         <div>
           <Switch
             :checked="isHourMode"
-            class="relative bg-custom-bg"
+            class="relative w-[120px] bg-custom-bg"
             @update:checked="isHourMode = $event"
           />
         </div>
@@ -170,25 +187,24 @@ const clientKey = ref("");
 }
 
 .balance {
-  width: 45.833vw;
+  @apply w-full h-full lg:h-auto lg:max-w-[55%];
+  @apply p-4 sm:px-6 sm:scroll-py-11;
 
   // max-width: 890px;
-  max-width: 50%;
   min-height: 400px;
-  padding: 25px 45px;
 }
 
 .api {
-  justify-content: flex-start;
-  width: 38.542vw;
+  @apply w-full h-full lg:h-auto lg:max-w-[45%];
 
   // max-width: 840px;
-  max-width: 50%;
-  min-height: 400px;
+  @apply sm:min-h-[400px];
+
+  justify-content: flex-start;
 }
 
 .green-rec {
-  @apply h-[3px] left-[10px] xl:left-[30px] rounded-[3px] xl:rounded-[5px];
+  @apply h-[3px] left-[25px] sm:left-[20px] xl:left-[30px] rounded-[3px] xl:rounded-[5px];
 
   position: absolute;
   bottom: 0;
@@ -221,8 +237,9 @@ const clientKey = ref("");
 }
 
 .nav-btn {
+  @apply w-[240px] xs:w-[290px] xs:ml-4;
+
   position: relative;
-  width: 290px;
 
   &::before {
     @extend .green-rec;

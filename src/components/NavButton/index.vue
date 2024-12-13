@@ -3,10 +3,7 @@
   <div ref="btnBox">
     <Button class="default-btn full-size flex-c">
       <!-- :class="customClass" -->
-      <span
-        class="text-xs xsm:text-sm 2xl:text-base geo-semiBold text-[#7EE5CC]"
-        >{{ text }}</span
-      >
+      <span class="text-xs xsm:text-sm text-[#7EE5CC]">{{ text }}</span>
       <Arrow class="ml-4 w-3 h-3" />
       <!-- <Img
         v-if="rightIcon !== ''"
@@ -69,12 +66,12 @@ const btnBox = ref(null);
 @import "../../style/func";
 
 .full-size {
+  // max-height: 72px;
+  @apply py-3 px-2;
+
   width: 100%;
   max-width: 297px;
   height: 100%;
-
-  // max-height: 72px;
-  padding: 13px 20px;
 }
 
 .default-btn {

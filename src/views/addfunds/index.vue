@@ -48,10 +48,12 @@ const paymentLogoStyle = (method: string): string => {
 
 <template>
   <div>
-    <div class="w-full flex-c justify-between">
+    <div
+      class="w-full flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4"
+    >
       <div class="vip-card card-bg">
-        <p class="text-lg text-white">VIP BENEFITS</p>
-        <p class="text-white text-3xl mt-4">
+        <p class="text-sm sm:text-base text-white">VIP BENEFITS</p>
+        <p class="text-xl md:text-4xl text-white mt-4">
           You can get extra free points by below vip levels
         </p>
         <div class="sub-card-box mt-4 flex flex-col gap-5">
@@ -60,10 +62,12 @@ const paymentLogoStyle = (method: string): string => {
               <div class="round-box flex-c">
                 <component :is="item.icon" />
               </div>
-              <span class="text-white text-xl">Top Up ${{ item.money }}</span>
+              <span class="text-white text-sm sm:text-xl">
+                Top Up ${{ item.money }}
+              </span>
               <div class="flex-c">
                 <div
-                  class="point text-white text-lg bg-[#2D3A7A] p-4 rounded-lg"
+                  class="point text-white text-center text-xs sm:text-xl bg-[#2D3A7A] sm:p-4 p-1 rounded-lg whitespace-break-spaces"
                 >
                   {{ item.free }}% EXTRA POINTS
                 </div>
@@ -82,11 +86,12 @@ const paymentLogoStyle = (method: string): string => {
         </p>
         <p class="text-lg text-custom-norText mt-4">AMOUNT ($)</p>
         <NumberInput class="mt-4" />
-        <div class="vip-progress w-[80%] mt-7">
+        <div class="vip-progress lg:w-[80%] mt-7">
           <div>
             <div class="level flex-c justify-start">
-              <Vip class="w-8 h-6 mr-2" />
-              <span class="text-custom-yellow align-bottom leading-6"
+              <Vip class="w-12 sm:w-8 mr-2" />
+              <span
+                class="text-custom-yellow align-bottom leading-6 whitespace-nowrap"
                 >VIP {{ levelIndex }}</span
               >
               <div class="tips text-white ml-8">
@@ -120,11 +125,13 @@ const paymentLogoStyle = (method: string): string => {
               }}</span>
             </div>
           </div>
-          <el-checkbox
-            label="I have read and agree this Terms & Condition and Refund Policy"
-            value="Value 1"
-            class="custom-checkbox mt-6"
-          />
+          <div class="w-full overflow-x-auto">
+            <el-checkbox
+              label="I have read and agree this Terms & Condition and Refund Policy"
+              value="Value 1"
+              class="custom-checkbox mt-6"
+            />
+          </div>
           <NavButton :text="'CHECKOUT'" class="nav-btn my-4" />
         </div>
       </div>
@@ -142,21 +149,22 @@ const paymentLogoStyle = (method: string): string => {
 
 <style lang="scss" scoped>
 .vip-card {
-  width: 45.833vw;
-
+  // width: 45.833vw;
+  // width: 60%;
   // max-width: 890px;
-  max-width: 50%;
+  @apply w-full h-full lg:h-auto lg:max-w-[55%];
+
   max-height: 840px;
 
   // padding: 25px 45px;
 }
 
 .topup-card {
-  justify-content: flex-start;
-  width: 38.542vw;
+  // width: 38.542vw;
+  // width: 40%;
+  @apply w-full h-full lg:h-auto lg:max-w-[45%];
 
-  // max-width: 840px;
-  max-width: 50%;
+  justify-content: flex-start;
   max-height: 840px;
 }
 
@@ -170,8 +178,8 @@ const paymentLogoStyle = (method: string): string => {
 }
 
 .round-box {
-  width: 60px;
-  height: 60px;
+  @apply w-12 h-12 md:w-16 md:h-16;
+
   background: radial-gradient(
     174% 99% at 50% 100%,
     rgb(81 91 171 / 80%) 0%,
@@ -179,6 +187,10 @@ const paymentLogoStyle = (method: string): string => {
     rgb(81 91 171 / 10%) 100%
   );
   border-radius: 999px;
+
+  svg {
+    @apply scale-75 md:scale-100;
+  }
 }
 
 .payment-item {
@@ -226,7 +238,7 @@ const paymentLogoStyle = (method: string): string => {
 }
 
 .green-rec {
-  @apply h-[3px] left-[10px] xl:left-[40px] rounded-[3px] xl:rounded-[5px];
+  @apply h-[3px] left-[25px] xl:left-[40px] rounded-[3px] xl:rounded-[5px];
 
   position: absolute;
   bottom: 0;

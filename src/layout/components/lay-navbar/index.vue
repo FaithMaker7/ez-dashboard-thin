@@ -55,17 +55,20 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
       <!-- 菜单搜索 -->
       <!-- <LaySearch id="header-search" /> -->
       <!-- balance -->
-      <div class="balance-tag flex-c text-white universal-bg rounded-lg">
+      <div
+        class="balance-tag hidden md:flex flex-c text-white universal-bg rounded-lg"
+      >
         <Coin class="mr-2" />
         <span>95,298,482</span><span class="text-[#91AAF2]">POINTS</span>
         <Add class="ml-2" />
       </div>
       <!-- 显示用户和退出登录 -->
-      <el-dropdown trigger="click">
+      <el-dropdown trigger="click" class="hidden md:block">
         <span class="el-dropdown-link universal-bg rounded-lg select-none">
-          <!-- <img :src="userAvatar" :style="avatarsStyle" /> -->
           <Profile class="mr-2" />
-          <p v-if="username" class="dark:text-white">{{ username }}</p>
+          <p v-if="username" class="text-xs lg:text-base dark:text-white">
+            {{ username }}
+          </p>
         </span>
         <template #dropdown>
           <el-dropdown-menu class="logout">
@@ -122,7 +125,7 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
       <LayNotice id="header-notice" class="text-white" />
       <!-- 系统设置 -->
       <span
-        class="set-icon text-white mr-2"
+        class="set-icon text-white sm:mr-2"
         :title="t('buttons.pureOpenSystemSet')"
         @click="onPanel"
       >
@@ -226,8 +229,7 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
       );
 }
 .globalization-icon {
-  width: 54px;
-  height: 54px;
+  @apply w-8 h-8 sm:w-14 sm:h-14;
   border-radius: 999px;
   // @extend .universal-bg;
   background:
@@ -245,10 +247,8 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
         rgba(70, 90, 200, 0.01) 100%
       );
   background-blend-mode: soft-light, normal;
-  @include icon-interactive;
   .inner {
-    width: 100%;
-    height: 100%;
+    @apply sm:w-full sm:h-full;
     border-radius: 999px;
     @include gradient-border(
       transparent,
@@ -258,10 +258,11 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
         rgba(81, 91, 171, 0.3) 53%,
         rgba(81, 91, 171, 0.1) 100%
       ),
-      6px,
+      3px,
       false,
       1
     );
+    @apply sm:border-[6px];
     box-shadow: inset 0 0 8px rgba(48, 63, 134, 0.9);
   }
 }
