@@ -118,7 +118,7 @@ const paymentLogoStyle = (method: string): string => {
                 class="round-logo w-[52px] h-[52px] rounded-full"
                 :class="paymentLogoStyle(item.method)"
               >
-                <!-- <component :is="item.icon" class="w-full h-full rounded-full" /> -->
+                <component :is="item.icon" class="w-full h-full rounded-full" />
               </div>
               <span class="text-white text-lg align-bottom ml-4 mt-4">{{
                 item.method

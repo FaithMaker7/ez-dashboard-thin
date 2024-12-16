@@ -136,7 +136,7 @@ const transitionMain = defineComponent({
                 :title="t('buttons.pureBackTop')"
                 target=".app-main .el-scrollbar__wrap"
               >
-                <BackTopIcon />
+                <BackTopIcon class="text-white" />
               </el-backtop>
               <div class="grow">
                 <transitionMain :route="route">
