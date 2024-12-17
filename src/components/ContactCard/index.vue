@@ -1,10 +1,8 @@
 <template>
   <div
-    class="contact-card relative flex flex-col justify-around items-center sm:flex-row sm:justify-between w-[100%] h-[100%] mx-auto mt-[20px] p-3"
+    class="contact-card relative flex flex-col justify-around items-center sm:flex-row sm:justify-between mx-auto mt-[20px] p-3"
   >
-    <div
-      class="tag w-[52px] h-[52px] xs:w-[60px] xs:h-[60px] sm:w-[82px] sm:h-[82px] rounded-full z-10 border-[#E65FD1] border-4 flex-c"
-    >
+    <div class="tag flex-c rounded-full z-10 border-[#E65FD1]">
       <component
         :is="iconSelector()"
         class="scale-75 sm:scale-100"
@@ -13,9 +11,9 @@
     </div>
 
     <div
-      class="right w-[90%] md:w-[100%] mx-auto ml-8 flex-c gap-2 sm:gap-6 md:gap-10"
+      class="right w-[90%] md:w-[100%] mx-auto ml-8 xs:ml-16 flex flex-col sm:flex-row sm:items-center lg:justify-around gap-2 sm:gap-6 md:gap-10"
     >
-      <div class="text w-[60%] text-white z-10">
+      <div class="text w-full sm:w-[60%] text-white z-10">
         <p class="text-xs sm:text-base md:text-lg lg:leading-10">
           {{ title }}
         </p>
@@ -27,7 +25,7 @@
         </p>
       </div>
       <div
-        class="w-[100px] h-[45px] md:w-[180px] lg:w-[260px] lg:h-[72px] z-20"
+        class="w-[160px] xs:w-[200px] h-[40px] sm:h-[60px] lg:w-[260px] lg:h-[72px] z-20"
       >
         <GraButton :text="btnText" is-square />
       </div>
@@ -124,6 +122,9 @@ const iconSelector = () => {
 }
 
 .tag {
+  @apply w-[52px] h-[52px] xs:w-[72px] xs:h-[72px] xl:w-[82px] xl:h-[82px];
+  @apply border-2 sm:border-4;
+
   position: absolute;
   top: 50%;
   left: -16px;

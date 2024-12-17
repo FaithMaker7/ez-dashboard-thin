@@ -21,10 +21,15 @@ defineOptions({
 }
 
 :deep(.el-table th.el-table__cell) {
+  height: 40px;
   font-size: 17px;
-  font-weight: normal;
+  font-weight: 500;
   color: #000;
   background-color: #79f2a1;
+
+  @media screen and (width <= 500px) {
+    font-size: 14px;
+  }
 }
 
 :deep(.el-table__body tr:hover > td.el-table__cell) {
@@ -55,9 +60,15 @@ defineOptions({
 :deep(.el-table__body tr > td.el-table__cell) {
   height: 60px;
   min-height: 60px;
+  font-size: 17px;
+
+  @media screen and (width <= 500px) {
+    font-size: 12px;
+  }
 }
 
 :deep(.el-table__header tr > th.el-table__cell) {
   height: 60px;
+  min-height: 40px;
 }
 </style>

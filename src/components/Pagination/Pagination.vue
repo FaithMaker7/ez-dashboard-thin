@@ -52,7 +52,7 @@ const emit = defineEmits(["page-change"]);
     <PaginationList v-slot="{ items }" class="flex items-center gap-1">
       <!-- <PaginationFirst :class="'btn-bg text-white'" /> -->
       <PaginationPrev
-        :class="'btn-bg text-white w-[50px] h-[50px] xl:w-[56px] xl:h-[56px] btn-border rounded-lg'"
+        :class="'btn-bg text-white w-[40px] h-[40px] xl:w-[56px] xl:h-[56px] btn-border rounded-lg'"
       />
 
       <template v-for="(item, index) in items">
@@ -63,7 +63,7 @@ const emit = defineEmits(["page-change"]);
           as-child
         >
           <Button
-            class="w-[50px] h-[50px] xl:w-[56px] xl:h-[56px] bg-transparent btn-border p-0 text-[#6B77B2] geo-semibold fs-20 rounded-lg"
+            class="w-[40px] h-[40px] xl:w-[56px] xl:h-[56px] bg-transparent btn-border p-0 text-[#6B77B2] geo-semibold fs-20 rounded-lg"
             :class="item.value === page ? 'selected' : ''"
           >
             {{ item.value }}
@@ -72,13 +72,13 @@ const emit = defineEmits(["page-change"]);
         <PaginationEllipsis
           v-else
           :key="item.type"
-          class="w-[50px] h-[50px] xl:w-[56px] xl:h-[56px] p-0 btn-border bg-transparent rounded-lg text-[#6B77B2] geo-semibold fs-20"
+          class="w-[40px] h-[40px] xl:w-[56px] xl:h-[56px] p-0 btn-border bg-transparent rounded-lg text-[#6B77B2] geo-semibold fs-20"
           :index="index"
         />
       </template>
 
       <PaginationNext
-        :class="'w-[50px] h-[50px] xl:w-[56px] xl:h-[56px] btn-bg btn-border text-white rounded-lg'"
+        :class="'w-[40px] h-[40px] xl:w-[56px] xl:h-[56px] btn-bg btn-border text-white rounded-lg'"
       />
       <!-- <PaginationLast :class="'btn-bg text-white'" /> -->
     </PaginationList>

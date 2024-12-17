@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useNav } from "@/layout/hooks/useNav";
 // 组件
+import ReText from "@/components/ReText";
 import { Switch } from "shadcnUi/components/ui/switch";
 import { ChartBar } from "@/components/Charts";
 import ReTable from "@/components/ReTable/index.vue";
@@ -11,6 +13,7 @@ import Logo from "@/assets/svg/dashboard/recaptcha-logo.svg?component";
 import DownArrow from "@/assets/svg/dashboard/down-arrow.svg?component";
 // 数据
 import { typeList, barChartData } from "@/components/Charts/data";
+const { tooltipEffect } = useNav();
 const curWeek = ref(0);
 const isHourMode = ref(false);
 const formatTypeList = typeList.map(item => ({
@@ -29,15 +32,22 @@ const formatTypeList = typeList.map(item => ({
         <el-dropdown
           id="header-translation"
           trigger="click"
-          class="w-[25%] h-[50px] flex-c bg-custom-bg rounded-lg"
+          class="w-[60%] sm:w-[40%] xl:w-[30%] h-[50px] flex-c bg-custom-bg rounded-lg"
         >
           <!-- <GlobalizationIcon
             class="navbar-bg-hover w-[40px] h-[48px] p-[11px] cursor-pointer outline-none"
           /> -->
           <div class="flex-c">
             <Logo class="w-6 h-6 rounded-full" />
-            <span class="text-white text-xl ml-2">FuncaptchaTaskProxyless</span>
-            <DownArrow class="flex-c ml-8" />
+            <ReText
+              :tippyProps="{
+                theme: tooltipEffect
+              }"
+              class="!w-[90px] xs:!w-[auto] !text-white !text-xs !ml-2"
+            >
+              FuncaptchaTaskProxyless
+            </ReText>
+            <DownArrow class="flex-c sm:ml-8" />
           </div>
           <template #dropdown>
             <el-dropdown-menu class="translation">
@@ -50,7 +60,7 @@ const formatTypeList = typeList.map(item => ({
         <div>
           <Switch
             :checked="isHourMode"
-            class="relative bg-custom-bg"
+            class="relative w-[80px] h-[50px] phone:w-[120px] bg-custom-bg"
             @update:checked="isHourMode = $event"
           />
         </div>

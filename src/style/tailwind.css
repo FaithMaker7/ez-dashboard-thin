@@ -39,6 +39,9 @@
     @apply dark:text-white dark:hover:!bg-[#242424];
   }
   .card-bg {
-    @apply bg-custom-cardBg/90 p-6 rounded-lg;
+    @apply bg-custom-cardBg/90 xs:p-6 p-3 rounded-lg;
+  }
+  .row-to-col {
+    @apply flex-c md:flex-col md:items-start;
   }
 }

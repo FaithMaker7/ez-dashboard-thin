@@ -9,61 +9,71 @@ import Gift from "@/assets/svg/referral/gift.svg?component";
 </script>
 
 <template>
-  <div class="grid-container">
-    <!-- 第一行 -->
-    <div class="item1 p-6 card-bg flex-c justify-around">
-      <div>
-        <p class="text-base text-white">BALANCE</p>
-        <p class="mt-6 text-white">
-          <span class="text-5xl">0</span>
-          <span class="text-custom-norText align-top ml-1">$</span>
-        </p>
+  <div>
+    <div class="first-row">
+      <div class="item1 p-6 card-bg flex-col-as min-h-40">
+        <div class="text-sm md:text-base">
+          <p class="text-white">BALANCE</p>
+          <p class="md:mt-6 text-white">
+            <span class="text-3xl md:text-5xl">0</span>
+            <span class="text-custom-norText align-top ml-1">$</span>
+          </p>
+        </div>
+
+        <div class="flex-col-as sm:flex-row">
+          <GlowButton
+            :text="'TRANSFER TO BALANCE'"
+            class="w-[220px] h-[45px] sm:h-[55px] mt-6"
+          />
+          <NavButton :text="'WITHDRAW'" class="nav-btn mt-6" />
+        </div>
       </div>
-      <GlowButton :text="'TRANSFER TO BALANCE'" class="mt-6" />
-      <NavButton :text="'WITHDRAW'" class="nav-btn mt-6" />
-    </div>
-    <div class="item2 p-6 card-bg">
-      <div>
-        <p class="text-base text-white">ALL-TIME PROFIT</p>
-        <p class="mt-6 text-white">
-          <span class="text-5xl">0</span>
-          <span class="text-custom-norText align-top ml-1">$</span>
-        </p>
+      <div class="item2 p-6 card-bg min-h-40">
+        <div class="text-sm md:text-base">
+          <p class="text-white">ALL-TIME PROFIT</p>
+          <p class="mt-6 text-white">
+            <span class="text-3xl md:text-5xl">0</span>
+            <span class="text-custom-norText align-top ml-1">$</span>
+          </p>
+        </div>
+      </div>
+      <div class="item3 p-6 card-bg min-h-40">
+        <div class="text-sm md:text-base">
+          <p class="text-white">REFERRALS</p>
+          <p class="mt-6 text-white">
+            <span class="text-3xl md:text-5xl">0</span>
+            <span class="text-custom-norText align-top ml-1">$</span>
+          </p>
+        </div>
       </div>
     </div>
-    <div class="item3 p-6 card-bg">
-      <div>
-        <p class="text-base text-white">REFERRALS</p>
-        <p class="mt-6 text-white">
-          <span class="text-5xl">0</span>
-          <span class="text-custom-norText align-top ml-1">$</span>
-        </p>
-      </div>
-    </div>
-    <!-- 后面三行 -->
-    <div class="h-24 px-2">
+    <div class="h-24 px-4">
       <ContactCard
         :title="'Referral link: https://dashboard.ez-captcha.com/register?inviteCode=IJdODeAuFUX'"
         :btn-text="'COPY REFERRAL LINK'"
       />
     </div>
     <div
-      class="item bg-custom-primary p-6 mt-10 rounded-lg flex-c justify-start"
+      class="item bg-custom-primary p-6 mt-16 rounded-lg sm:flex-c sm:justify-start"
     >
-      <div class="gift-icon flex-c rounded-md ml-4">
+      <div
+        class="gift-icon flex-c rounded-md sm:ml-4 float-left sm:float-none mr-4"
+      >
         <Gift />
       </div>
-      <p class="text-custom-norText text-2xl ml-8">
+      <p class="text-custom-norText xl:text-2xl sm:ml-8 clear-right">
         You will receive a 10% profit when your referrals add balance (each time
-        that your referral add funds, you will get 10%),<br />
+        that your referral add funds, you will get 10%),<br />
         the profit can be directly transferred to the account balance, or you
-        can contact customer service to withdraw when it accumulates to 200$.
+        can contact customer service to withdraw when it accumulates to 200$.
       </p>
     </div>
-    <div class="text-white text-4xl mt-6">Referral History</div>
+    <div class="text-white text-2xl lg:text-4xl mt-6">Referral History</div>
     <div class="item card-bg mt-6">
       <div class="bg-custom-cardBg/40 p-2 rounded-lg">
-        <div class="ml-4 text-custom-norText text-2xl">Statistics of Hours</div>
+        <div class="lg:ml-4 text-custom-norText lg:text-2xl">
+          Statistics of Hours
+        </div>
         <NoData class="mt-2" />
       </div>
     </div>
@@ -71,32 +81,35 @@ import Gift from "@/assets/svg/referral/gift.svg?component";
 </template>
 
 <style lang="scss" scoped>
-.grid-container {
-  display: grid;
-  grid-template-rows: repeat(4, auto);
-  grid-template-columns: repeat(4, 1fr); /* 将容器分为4等份 */
-  gap: 10px;
+.first-row {
+  @apply grid gap-[10px] mb-[10px];
+
+  grid-template-columns: 1fr;
+
+  @media (width >= 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-/* 第一行的三个元素 */
-.item1 {
-  grid-column: span 2; /* 占据2份，即1/2 */
-}
+@media (width <= 768px) {
+  .item2,
+  .item3 {
+    grid-column: span 1;
+  }
 
-.item2,
-.item3 {
-  grid-column: span 1; /* 各占据1份，即1/4 */
-}
+  .first-row {
+    grid-template-columns: repeat(2, 1fr);
 
-/* 第2-4行占满整行 */
-.grid-container > div:nth-child(n + 4) {
-  grid-column: 1 / -1; /* 从第一列开始到最后一列 */
+    .item1 {
+      grid-column: 1 / -1;
+    }
+  }
 }
 
 .gift-icon {
+  @apply p-4;
+
   box-sizing: border-box;
-  width: 110px;
-  height: 110px;
   background: radial-gradient(
       199% 99% at 50% 99%,
       rgb(255 255 255 / 85%) 0%,
@@ -115,7 +128,7 @@ import Gift from "@/assets/svg/referral/gift.svg?component";
 }
 
 .green-rec {
-  @apply h-[3px] left-[10px] xl:left-[30px] rounded-[3px] xl:rounded-[5px];
+  @apply h-[3px] left-[25px] sm:left-[20px] xl:left-[30px] rounded-[3px] xl:rounded-[5px];
 
   position: absolute;
   bottom: 0;
@@ -148,14 +161,15 @@ import Gift from "@/assets/svg/referral/gift.svg?component";
 }
 
 .nav-btn {
-  position: relative;
+  @apply h-[45px] sm:h-[55px] sm:ml-4;
 
-  // width: 290px;
+  position: relative;
+  width: 215px;
 
   &::before {
     @extend .green-rec;
 
-    width: 68%;
+    width: 60%;
   }
 }
 </style>

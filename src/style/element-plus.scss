@@ -46,6 +46,7 @@
 .el-input-group__append {
   @apply p-2 xs:p-4;
 
+  min-width: 80px;
   overflow: hidden;
   background-color: rgb(0 21 41 / 30%);
   border-radius: 10px;

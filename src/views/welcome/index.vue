@@ -53,7 +53,7 @@ const clientKey = ref("");
       class="flex flex-col lg:flex-row lg:justify-between lg:items-center md:gap-4 gap-2"
     >
       <!-- 余额卡片 -->
-      <div class="balance card">
+      <div class="balance card flex-col-as">
         <p class="text-sm sm:text-base text-white">BALANCE</p>
         <p class="sm:mt-6 text-white">
           <span class="text-4xl sm:text-5xl">95,298,482</span>
@@ -82,7 +82,7 @@ const clientKey = ref("");
           </div>
         </div>
         <div class="btn-box xs:flex xs:justify-center xs:items-center xs:mt-7">
-          <GlowButton class="w-[60%]" />
+          <GlowButton class="w-[60%] h-[50px] sm:h-[60px]" />
           <NavButton
             :text="'VIEW PAYMENT HISTORY'"
             class="nav-btn mt-4 xs:mt-0"
@@ -90,7 +90,7 @@ const clientKey = ref("");
         </div>
       </div>
       <!-- API卡片 -->
-      <div class="api card">
+      <div class="api card flex-col-as">
         <div class="w-full h-[40%] bg-custom-primary p-6 rounded-lg">
           <p class="text-base text-custom-norText">YOUR CLIENT KEY:</p>
           <div class="w-full h-[50px] rounded-lg mt-4">
@@ -106,7 +106,7 @@ const clientKey = ref("");
             </ReInput>
           </div>
         </div>
-        <div class="w-full h-[60%] mt-6 p-6">
+        <div class="w-full h-[60%] sm:mt-6 p-6">
           <p class="text-base text-custom-norText">HOW TO USE OUR API?</p>
           <p class="text-xl md:text-3xl text-white mt-2">
             You can use our api with your key
@@ -116,14 +116,14 @@ const clientKey = ref("");
       </div>
     </div>
     <!-- VIEW DETAIL -->
-    <div class="h-24 px-4">
+    <div class="w-full h-24 px-4">
       <ContactCard
         :title="'Join our discord for receive 10000 free points! Join and contact us!'"
         :btn-text="'VIEW DETAIL'"
       />
     </div>
     <!-- 使用量柱形图 -->
-    <div class="mt-4">
+    <div class="mt-8">
       <div
         class="switch-box flex-c !justify-between bg-custom-primary p-4 rounded-lg"
       >
@@ -145,7 +145,7 @@ const clientKey = ref("");
             >
               FuncaptchaTaskProxyless
             </ReText>
-            <DownArrow class="flex-c ml-8" />
+            <DownArrow class="flex-c sm:ml-8" />
           </div>
           <template #dropdown>
             <el-dropdown-menu class="translation">
@@ -158,7 +158,7 @@ const clientKey = ref("");
         <div>
           <Switch
             :checked="isHourMode"
-            class="relative w-[120px] bg-custom-bg"
+            class="relative w-[80px] h-[50px] phone:w-[120px] bg-custom-bg"
             @update:checked="isHourMode = $event"
           />
         </div>
@@ -181,9 +181,9 @@ const clientKey = ref("");
     </div>
   </div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 .card {
-  @apply flex-col-as bg-custom-cardBg/40 rounded-lg;
+  @apply bg-custom-cardBg/40 rounded-lg;
 }
 
 .balance {
@@ -237,7 +237,7 @@ const clientKey = ref("");
 }
 
 .nav-btn {
-  @apply w-[240px] xs:w-[290px] xs:ml-4;
+  @apply w-[240px] xs:h-[50px] xs:w-[290px] xs:ml-4;
 
   position: relative;
 

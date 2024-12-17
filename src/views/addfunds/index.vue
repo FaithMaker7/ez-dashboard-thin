@@ -9,12 +9,19 @@ import NavButton from "@/components/NavButton/index.vue";
 import Vip from "@/assets/svg/dashboard/vip.svg?component";
 import { Recaptcha, Funcaptcha, Datacom } from "@/assets/svg/logo";
 import RightArrow from "@/assets/svg/dashboard/right-arrow.svg?component";
-// import { Litcoin, Usdt, Paypal, Tron, Wechat } from "@/assets/svg/paylogo";
-import Paypal from "@/assets/svg/paylogo/paypal.svg?component";
-import Usdt from "@/assets/svg/paylogo/usdt.svg?component";
-import Litcoin from "@/assets/svg/paylogo/litcoin.svg?component";
-import Tron from "@/assets/svg/paylogo/tron.svg?component";
-import Wechat from "@/assets/svg/paylogo/wechat.svg?component";
+import {
+  Litcoin,
+  Usdt,
+  Paypal,
+  PaypalCredit,
+  Tron,
+  Wechat
+} from "@/assets/svg/paylogo";
+// import Paypal from "@/assets/svg/paylogo/paypal.svg?component";
+// import Usdt from "@/assets/svg/paylogo/usdt.svg?component";
+// import Litcoin from "@/assets/svg/paylogo/litcoin.svg?component";
+// import Tron from "@/assets/svg/paylogo/tron.svg?component";
+// import Wechat from "@/assets/svg/paylogo/wechat.svg?component";
 import { ref } from "vue";
 const levelIndex = ref(1); // 价格等级
 const vipSystem = [
@@ -28,7 +35,7 @@ const vipSystem = [
   { level: 7, money: "2000", free: "20", icon: Recaptcha }
 ];
 const paymentMethods = [
-  { method: "Credit Card", icon: Paypal },
+  { method: "Credit Card", icon: PaypalCredit },
   { method: "Paypal", icon: Paypal },
   { method: "Usdt", icon: Usdt },
   { method: "Litcoin", icon: Litcoin },
@@ -38,10 +45,12 @@ const paymentMethods = [
 const paymentLogoStyle = (method: string): string => {
   if (method === "Credit Card") {
     return "bg-white";
-  } else if (method === "Paypal") {
+  } else if (method === "PaypalCredit") {
     return "bg-custom-primary/80 border-custom-primary border-2";
+  } else if (method === "Paypal") {
+    return "bg-[#2C3B89] border-[#3E4F9C] border-2";
   } else {
-    return "bg-custom-primary/60 border-custom-primary border-2";
+    return "";
   }
 };
 </script>
@@ -49,25 +58,25 @@ const paymentLogoStyle = (method: string): string => {
 <template>
   <div>
     <div
-      class="w-full flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4"
+      class="w-full flex flex-col xl:flex-row xl:justify-between xl:items-stretch gap-4"
     >
       <div class="vip-card card-bg">
-        <p class="text-sm sm:text-base text-white">VIP BENEFITS</p>
-        <p class="text-xl md:text-4xl text-white mt-4">
+        <p class="text-sm sm:text-base lg:text-lg text-white">VIP BENEFITS</p>
+        <p class="text-xl md:text-2xl lg:text-4xl text-white mt-4">
           You can get extra free points by below vip levels
         </p>
         <div class="sub-card-box mt-4 flex flex-col gap-5">
           <div v-for="item in vipSystem" :key="item.level">
-            <div v-if="item.level !== 0" class="sub-card bg-[#222E60]">
+            <div v-if="item.level !== 0" class="sub-card px-2 bg-[#222E60]">
               <div class="round-box flex-c">
                 <component :is="item.icon" />
               </div>
-              <span class="text-white text-sm sm:text-xl">
+              <span class="text-white text-sm md:text-lg lg:text-xl ml-1">
                 Top Up ${{ item.money }}
               </span>
               <div class="flex-c">
                 <div
-                  class="point text-white text-center text-xs sm:text-xl bg-[#2D3A7A] sm:p-4 p-1 rounded-lg whitespace-break-spaces"
+                  class="point text-white text-center text-xs md:text-lg lg:text-xl bg-[#2D3A7A] sm:p-3 p-1 rounded-lg whitespace-break-spaces"
                 >
                   {{ item.free }}% EXTRA POINTS
                 </div>
@@ -79,12 +88,14 @@ const paymentLogoStyle = (method: string): string => {
       </div>
 
       <div class="topup-card card-bg">
-        <p class="text-lg text-white">AVAILABLE BALANCE</p>
+        <p class="text-sm sm:text-base lg:text-lg text-white">
+          AVAILABLE BALANCE
+        </p>
         <p class="mt-6 text-white">
-          <span class="text-5xl">257,000</span>
+          <span class="text-4xl sm:text-5xl">257,000</span>
           <span class="text-custom-norText align-top ml-1">POINTS</span>
         </p>
-        <p class="text-lg text-custom-norText mt-4">AMOUNT ($)</p>
+        <p class="sm:text-lg text-custom-norText mt-4">AMOUNT ($)</p>
         <NumberInput class="mt-4" />
         <div class="vip-progress lg:w-[80%] mt-7">
           <div>
@@ -107,22 +118,26 @@ const paymentLogoStyle = (method: string): string => {
               class="w-full h-4"
             />
           </div>
-          <p class="text-lg text-white mt-8">PAYMENT METHODS</p>
-          <div class="payment-box grid grid-cols-2 grid-rows-3 gap-4">
+          <p class="sm:text-lg text-white mt-8 mb-4">PAYMENT METHODS</p>
+          <div
+            class="payment-box grid grid-cols-2 grid-rows-3 gap-2 xs:gap-4 mx-auto"
+          >
             <div
               v-for="item in paymentMethods"
               :key="item.method"
-              class="payment-item flex justify-start items-center rounded-lg p-4"
+              class="payment-item flex-sc rounded-lg p-2 basis-0"
             >
               <div
-                class="round-logo w-[52px] h-[52px] rounded-full"
+                class="round-logo rounded-full flex-c"
                 :class="paymentLogoStyle(item.method)"
               >
-                <component :is="item.icon" class="w-full h-full rounded-full" />
+                <!-- <component :is="item.icon" class="w-full h-full rounded-full" /> -->
+                <img :src="item.icon" alt="" class="" />
               </div>
-              <span class="text-white text-lg align-bottom ml-4 mt-4">{{
-                item.method
-              }}</span>
+              <span
+                class="text-white text-xs phone:text-sm xs:text-lg align-bottom ml-3"
+                >{{ item.method }}</span
+              >
             </div>
           </div>
           <div class="w-full overflow-x-auto">
@@ -132,12 +147,12 @@ const paymentLogoStyle = (method: string): string => {
               class="custom-checkbox mt-6"
             />
           </div>
-          <NavButton :text="'CHECKOUT'" class="nav-btn my-4" />
+          <NavButton :text="'CHECKOUT'" class="nav-btn" />
         </div>
       </div>
     </div>
     <div class="bg-custom-cardBg/40 p-4 rounded-lg mt-4">
-      <div class="ml-4 text-custom-norText text-2xl mb-2">
+      <div class="sm:ml-4 text-custom-norText text-2xl mb-2">
         Statistics of Hours
       </div>
       <!-- <NoData class="mt-2" /> -->
@@ -152,9 +167,9 @@ const paymentLogoStyle = (method: string): string => {
   // width: 45.833vw;
   // width: 60%;
   // max-width: 890px;
-  @apply w-full h-full lg:h-auto lg:max-w-[55%];
+  @apply w-full h-full xl:max-w-[55%];
 
-  max-height: 840px;
+  // max-height: 880px;
 
   // padding: 25px 45px;
 }
@@ -162,10 +177,9 @@ const paymentLogoStyle = (method: string): string => {
 .topup-card {
   // width: 38.542vw;
   // width: 40%;
-  @apply w-full h-full lg:h-auto lg:max-w-[45%];
+  @apply w-full xl:max-w-[45%];
 
   justify-content: flex-start;
-  max-height: 840px;
 }
 
 .sub-card {
@@ -178,7 +192,7 @@ const paymentLogoStyle = (method: string): string => {
 }
 
 .round-box {
-  @apply w-12 h-12 md:w-16 md:h-16;
+  @apply w-11 h-11 phone:w-[52px] phone:h-[52px] lg:w-16 lg:h-16;
 
   background: radial-gradient(
     174% 99% at 50% 100%,
@@ -200,11 +214,19 @@ const paymentLogoStyle = (method: string): string => {
     rgb(28 38 89 / 40%) 100%
   );
   background-blend-mode: overlay;
+
+  .round-logo {
+    @apply w-11 h-11 min-w-11 min-h-11 md:w-[52px] md:h-[52px];
+  }
 }
 
 :deep(.custom-checkbox) {
   --el-checkbox-font-size: 20px;
   --el-checkbox-text-color: #fff; // label颜色
+
+  @media (width <= 768px) {
+    --el-checkbox-font-size: 16px;
+  }
 
   .el-checkbox__input {
     .el-checkbox__inner {
@@ -271,9 +293,9 @@ const paymentLogoStyle = (method: string): string => {
 }
 
 .nav-btn {
+  @apply w-[200px] sm:w-[290px] mt-4 sm:mt-8;
+
   position: relative;
-  width: 270px;
-  height: 60px;
 
   &::before {
     @extend .green-rec;

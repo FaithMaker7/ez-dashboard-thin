@@ -196,7 +196,7 @@ const transitionMain = defineComponent({
 
 <style scoped>
 .app-main {
-  @apply md:p-12;
+  @apply p-6 md:p-12;
 
   position: relative;
   width: 100%;
@@ -215,7 +215,7 @@ const transitionMain = defineComponent({
 }
 
 .main-content {
-  margin: 24px;
+  margin: 0 auto;
 }
 
 :deep(.el-scrollbar__view) {

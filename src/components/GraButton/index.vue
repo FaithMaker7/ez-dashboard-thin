@@ -1,9 +1,6 @@
 <template>
   <div class="relative outer w-full h-full" :class="{ 'btn-square': isSquare }">
-    <div
-      class="btn-default w-full h-full px-2 py-3"
-      :class="{ 'btn-square': isSquare }"
-    >
+    <div class="btn-default w-full h-full" :class="{ 'btn-square': isSquare }">
       <div class="glow w-full h-full" :class="{ 'btn-square': isSquare }">
         <!-- <Img
           v-if="icon !== ''"
@@ -11,7 +8,7 @@
           class="w-5 h-5 sm:w-[30px] sm:h-[30px] z-30"
         /> -->
         <div
-          class="text-white text-xs md:text-lg text-center sm:text-nowrap geo-medium z-30"
+          class="text-white text-xs md:text-sm lg:text-base text-center sm:text-nowrap geo-medium z-30"
         >
           {{ text }}
         </div>
