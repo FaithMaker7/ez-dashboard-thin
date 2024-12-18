@@ -7,6 +7,7 @@ import { useTranslationLang } from "@/layout/hooks/useTranslationLang";
 import LaySidebarFullScreen from "../lay-sidebar/components/SidebarFullScreen.vue";
 import LaySidebarBreadCrumb from "../lay-sidebar/components/SidebarBreadCrumb.vue";
 import LaySidebarTopCollapse from "../lay-sidebar/components/SidebarTopCollapse.vue";
+import ReText from "@/components/ReText";
 // import LaySidebarLeftCollapse from "../lay-sidebar/components/SidebarLeftCollapse.vue";
 import GlobalIcon from "@/assets/svg/global.svg?component";
 import Coin from "@/assets/svg/nav/coin.svg?component";
@@ -28,6 +29,7 @@ const {
   userAvatar,
   avatarsStyle,
   toggleSideBar,
+  tooltipEffect,
   getDropdownItemStyle,
   getDropdownItemClass
 } = useNav();
@@ -56,19 +58,27 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
       <!-- <LaySearch id="header-search" /> -->
       <!-- balance -->
       <div
-        class="balance-tag hidden md:flex flex-c text-white universal-bg rounded-lg"
+        class="balance-tag hidden md:flex flex-c text-xs md:text-base text-white universal-bg rounded-lg"
       >
-        <Coin class="mr-2" />
+        <Coin class="mr-2 scale-75 md:scale-100" />
         <span>95,298,482</span><span class="text-[#91AAF2]">POINTS</span>
-        <Add class="ml-2" />
+        <Add class="ml-2 scale-75 md:scale-100" />
       </div>
       <!-- 显示用户和退出登录 -->
-      <el-dropdown trigger="click" class="hidden md:block">
-        <span class="el-dropdown-link universal-bg rounded-lg select-none">
-          <Profile class="mr-2" />
-          <p v-if="username" class="text-xs lg:text-base dark:text-white">
+      <el-dropdown trigger="click" class="p-1">
+        <span
+          class="el-dropdown-link universal-bg w-[150px] sm:w-auto rounded-lg select-none"
+        >
+          <Profile class="w-8 h-8 scale-75 md:scale-100" />
+          <ReText
+            v-if="username"
+            :tippyProps="{
+              theme: tooltipEffect
+            }"
+            class="text-xs md:text-base dark:text-white w-[80px] sm:w-auto"
+          >
             {{ username }}
-          </p>
+          </ReText>
         </span>
         <template #dropdown>
           <el-dropdown-menu class="logout">
@@ -269,6 +279,6 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
 
 .balance-tag {
   height: 100%;
-  padding: 0px 14px 0px 14px;
+  @apply px-2 md:px-4;
 }
 </style>

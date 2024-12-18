@@ -25,7 +25,7 @@ const { locale, translationCh, translationEn } = useTranslationLang();
 <template>
   <div class="select-none bg-[#12193C]">
     <!-- <img :src="bg" class="wave" /> -->
-    <div class="flex-c absolute right-5 top-3 language-switch">
+    <div class="flex-c absolute right-5 top-3">
       <!-- 国际化 -->
       <el-dropdown trigger="click">
         <globalization
@@ -60,29 +60,35 @@ const { locale, translationCh, translationEn } = useTranslationLang();
       </el-dropdown>
     </div>
     <div class="login-container">
-      <div class="login-intro">
-        <p class="text-white text-4xl lg:text-8xl">
-          Unleashing Your<br />
+      <div
+        class="login-intro md:max-w-[500px] pc:min-w-[720px] mx-auto flex-col-cs"
+      >
+        <!-- <component :is="toRaw(illustration)" /> -->
+        <p class="text-white text-3xl md:text-4xl xl:text-6xl pc:text-8xl">
+          Unleashing Your<br class="hidden pc:block" />
           RPA Potential
         </p>
-        <p class="text-white mt-2 lg:mt-6 lg:text-2xl">
+        <p class="text-white text-sm md:text-lg pc:text-2xl mt-2 md:mt-6">
           Discover seamless automatic captcha solving with our<br
-            class="hide-mobile"
+            class="hidden pc:block"
           />
           AI-powered Auto Web Unblock technology!
         </p>
-        <div class="captcha-list">
+        <div class="captcha-list flex-col-as gap-3 pc:gap-9 mt-2 md:mt-9">
           <div
             v-for="item in captchaList"
             :key="item.title"
-            class="captcha-item"
+            class="captcha-item flex-sc"
           >
             <div class="round-box flex-c">
-              <component :is="item.icon" class="w-12 h-12" />
+              <component :is="item.icon" class="scale-75 2xl:scale-100" />
             </div>
-            <div class="captcha-content">
-              <p class="responsive-text">{{ item.title }}</p>
-              <p v-if="item.dec" class="responsive-desc">
+            <div class="ml-5">
+              <p class="text-white pc:text-pc">{{ item.title }}</p>
+              <p
+                v-if="item.dec !== ''"
+                class="text-custom-norText pc:text-lg pc:mt-3"
+              >
                 {{ item.dec }}
               </p>
             </div>
@@ -106,100 +112,6 @@ const { locale, translationCh, translationEn } = useTranslationLang();
 <style lang="scss" scoped>
 @import "@/style/func";
 
-// 响应式调整
-@media screen and (width <= 1180px) {
-  .login-intro {
-    min-width: 580px;
-  }
-
-  .responsive-title {
-    font-size: 4rem;
-  }
-
-  .responsive-subtitle {
-    font-size: 1.25rem;
-  }
-
-  .round-box {
-    width: 50px;
-    height: 50px;
-  }
-
-  .captcha-list {
-    gap: 1.5rem;
-  }
-}
-
-@media screen and (width <= 968px) {
-  .language-switch {
-    top: 1rem;
-    right: 1rem;
-  }
-
-  .login-intro {
-    align-items: center;
-    min-width: 100%;
-    padding: 2rem;
-    text-align: center;
-  }
-
-  .responsive-title {
-    font-size: 3rem;
-    text-align: center;
-  }
-
-  .responsive-subtitle {
-    font-size: 1.125rem;
-    text-align: center;
-  }
-
-  .hide-mobile {
-    display: none;
-  }
-
-  .captcha-list {
-    gap: 1rem;
-  }
-
-  .form-bg {
-    width: 100%;
-    max-width: 480px;
-    margin: 2rem auto;
-  }
-}
-
-@media screen and (width <= 480px) {
-  .login-intro {
-    padding: 1rem;
-  }
-
-  .responsive-title {
-    font-size: 2.5rem;
-  }
-
-  .responsive-subtitle {
-    font-size: 1rem;
-  }
-
-  .responsive-text {
-    font-size: 1.25rem;
-  }
-
-  .responsive-desc {
-    font-size: 1rem;
-  }
-
-  .round-box {
-    width: 40px;
-    height: 40px;
-  }
-
-  .form-bg {
-    padding: 1rem;
-    margin: 1rem auto;
-  }
-}
-
 :deep(.el-input-group__append, .el-input-group__prepend) {
   padding: 0;
 }
@@ -221,8 +133,8 @@ const { locale, translationCh, translationEn } = useTranslationLang();
 }
 
 .round-box {
-  width: 60px;
-  height: 60px;
+  @apply w-11 h-11 2xl:w-16 2xl:h-16;
+
   background: radial-gradient(
     174% 99% at 50% 100%,
     rgb(81 91 171 / 80%) 0%,
@@ -323,40 +235,5 @@ const { locale, translationCh, translationEn } = useTranslationLang();
   @include noise-bg;
 
   border-radius: 1rem;
-}
-
-// 响应式基础样式
-.login-intro {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  min-width: 720px;
-}
-
-.captcha-list {
-  display: flex;
-  flex-direction: column;
-  gap: 2.25rem;
-  width: 100%;
-  margin-top: 2.25rem;
-}
-
-.captcha-item {
-  display: flex;
-  align-items: center;
-}
-
-.captcha-content {
-  margin-left: 1.25rem;
-}
-
-.responsive-text {
-  font-size: 1.5rem;
-  color: white;
-}
-
-.responsive-desc {
-  margin-top: 0.75rem;
-  font-size: 1.125rem;
 }
 </style>

@@ -117,15 +117,18 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div>
+  <div class="w-full h-full flex-col-ac">
     <Motion>
-      <p v-if="!isForget" class="outline-none text-white text-6xl mt-8">
+      <p
+        v-if="!isForget"
+        class="outline-none text-white text-3xl pc:text-6xl mt-2 pc:mt-8"
+      >
         {{ isLogin ? t("login.pureLogin") : t("signup.pureSignup") }}
       </p>
-      <p v-else class="text-custom-norText text-xl mt-4">
+      <p v-else class="text-custom-norText text-2xl pc:text-6xl mt-4">
         {{ t("forget.pureForget") }}
       </p>
-      <p class="text-custom-norText text-xl mt-4">
+      <p class="text-custom-norText text-sm pc:text-xl mt-4">
         It's so easy to solve captcha
       </p>
     </Motion>
@@ -136,7 +139,7 @@ onBeforeUnmount(() => {
       :model="loginForm"
       :rules="loginRules"
       size="large"
-      class="mt-16"
+      class="mt-4 pc:mt-16"
     >
       <Motion :delay="100">
         <el-form-item prop="username" label="Email:" label-position="top">
@@ -169,18 +172,20 @@ onBeforeUnmount(() => {
             class="custom-checkbox"
             size="default"
           />
-          <div class="text-custom-norText text-lg flex-sc">
-            <ForgotLock class="w-5 h-5" />
-            <span class="ml-2 cursor-pointer" @click="onSwichForget"
+          <div
+            class="text-custom-norText text-xs lg:text-sm pc:text-lg flex-sc ml-6"
+          >
+            <ForgotLock class="w-5 h-5 scale-75 pc:scale-100" />
+            <span class="pc:ml-2 cursor-pointer" @click="onSwichForget"
               >Forgot Password?</span
             >
           </div>
         </div>
       </Motion>
 
-      <Motion :delay="250" class="h-40 flex-c">
+      <Motion :delay="250" class="h-14 pc:h-40 flex-c">
         <GlowButton
-          class="w-[200px] h-[65px] mt-4"
+          class="w-[150px] h-[45px] md:w-[180px] md:h-[55px] pc:w-[200px] pc:h-[65px] mt-8 md:mt-12"
           :text="t('login.pureLogin')"
           :loading="loading"
           @click="onLogin(loginFormRef)"
@@ -195,7 +200,7 @@ onBeforeUnmount(() => {
       :model="signupForm"
       :rules="loginRules"
       size="large"
-      class="mt-16"
+      class="mt-10 pc:mt-16"
     >
       <Motion :delay="100">
         <el-form-item prop="username" label="Email:" label-position="top">
@@ -220,9 +225,9 @@ onBeforeUnmount(() => {
         </el-form-item>
       </Motion>
 
-      <Motion :delay="250" class="h-40 flex-c">
+      <Motion :delay="250" class="h-14 pc:h-40 flex-c">
         <GlowButton
-          class="w-[200px] h-[65px] mt-4"
+          class="w-[150px] h-[45px] md:w-[180px] md:h-[55px] pc:w-[200px] pc:h-[65px] mt-2 md:mt-12"
           :text="t('signup.pureSignup')"
           :loading="loading"
           @click="isLogin ? onLogin(loginFormRef) : onSignUp(signupFormRef)"
@@ -237,7 +242,7 @@ onBeforeUnmount(() => {
       :model="resetForm"
       :rules="loginRules"
       size="large"
-      class="mt-16"
+      class="mt-8 pc:mt-16"
     >
       <Motion :delay="150">
         <el-form-item prop="username" label="Email:" label-position="top">
@@ -250,9 +255,9 @@ onBeforeUnmount(() => {
         </el-form-item>
       </Motion>
 
-      <Motion :delay="250" class="h-40 flex-c">
+      <Motion :delay="250" class="h-14 pc:h-40 flex-c">
         <GlowButton
-          class="w-[200px] h-[65px] mt-4"
+          class="w-[150px] h-[45px] md:w-[180px] md:h-[55px] pc:w-[200px] pc:h-[65px] my-2 md:mt-12"
           :text="t('forget.pureForgetSubmit')"
           :loading="loading"
           @click="onForget()"
@@ -261,15 +266,17 @@ onBeforeUnmount(() => {
     </el-form>
 
     <!-- 底部切换提示 -->
-    <Motion :delay="300" class="h-40 flex-c text-xl">
+    <Motion :delay="300" class="h-14 pc:h-40 flex-c pc:text-xl mt-8 pc:mt-0">
       <p v-if="!isForget" class="text-custom-norText">
         {{ isLogin ? "Don't have an account?" : "Already have an account?" }}
         <span class="text-white cursor-pointer" @click="onSwichForm">
           {{ isLogin ? t("signup.pureSignup") : t("login.pureLogin") }}
         </span>
       </p>
-      <div v-else class="text-custom-norText">
-        <p class="w-[400px] text-base">{{ t("forget.pureForgetTip") }}</p>
+      <div v-else class="text-custom-norText mb-6 xs:mb-0">
+        <p class="sm;w-[400px] text-sm md:text-base">
+          {{ t("forget.pureForgetTip") }}
+        </p>
         <p class="mt-4 text-white cursor-pointer" @click="onSwichLogin">
           {{ t("forget.pureForgetBack") }}
         </p>
@@ -277,3 +284,66 @@ onBeforeUnmount(() => {
     </Motion>
   </div>
 </template>
+
+<style lang="scss" scoped>
+:deep(.el-input) {
+  --el-input-height: 50px;
+  --el-input-font-size: 18px;
+  --el-input-line-height: 50px;
+
+  height: var(--el-input-height);
+
+  @media screen and (width <= 768px) {
+    --el-input-height: 40px;
+    --el-input-font-size: 14px;
+    --el-input-line-height: 40px;
+  }
+
+  .el-input__wrapper {
+    padding: 1px 15px;
+
+    @media screen and (width <= 768px) {
+      padding: 1px 12px;
+    }
+  }
+
+  .el-input__inner {
+    height: var(--el-input-height);
+    font-size: var(--el-input-font-size);
+    line-height: var(--el-input-line-height);
+  }
+
+  .el-input__prefix {
+    font-size: calc(var(--el-input-font-size) + 2px);
+  }
+}
+
+:deep(.el-form-item__label) {
+  margin-bottom: 8px;
+  font-size: 16px;
+
+  @media screen and (width <= 768px) {
+    margin-bottom: 2px;
+    font-size: 12px;
+  }
+}
+
+:deep(.el-checkbox) {
+  --el-checkbox-input-height: 20px;
+  --el-checkbox-input-width: 20px;
+
+  @media screen and (width <= 768px) {
+    --el-checkbox-input-height: 16px;
+    --el-checkbox-input-width: 16px;
+  }
+
+  .el-checkbox__label {
+    @apply text-xs lg:text-sm pc:text-lg;
+  }
+
+  .el-checkbox__inner {
+    width: var(--el-checkbox-input-width) !important;
+    height: var(--el-checkbox-input-height) !important;
+  }
+}
+</style>

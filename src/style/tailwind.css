@@ -34,6 +34,9 @@
   .flex-col-cs {
     @apply flex flex-col justify-center items-start;
   }
+  .flex-col-ac {
+    @apply flex flex-col justify-around items-stretch;
+  }
 
   .navbar-bg-hover {
     @apply dark:text-white dark:hover:!bg-[#242424];

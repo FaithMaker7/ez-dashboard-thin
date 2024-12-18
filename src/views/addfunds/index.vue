@@ -68,10 +68,10 @@ const paymentLogoStyle = (method: string): string => {
         <div class="sub-card-box mt-4 flex flex-col gap-5">
           <div v-for="item in vipSystem" :key="item.level">
             <div v-if="item.level !== 0" class="sub-card px-2 bg-[#222E60]">
-              <div class="round-box flex-c">
+              <div class="round-box flex-c mr-2">
                 <component :is="item.icon" />
               </div>
-              <span class="text-white text-sm md:text-lg lg:text-xl ml-1">
+              <span class="text-white text-sm md:text-lg lg:text-xl">
                 Top Up ${{ item.money }}
               </span>
               <div class="flex-c">
@@ -216,7 +216,7 @@ const paymentLogoStyle = (method: string): string => {
   background-blend-mode: overlay;
 
   .round-logo {
-    @apply w-11 h-11 min-w-11 min-h-11 md:w-[52px] md:h-[52px];
+    @apply w-10 h-10 min-w-11 min-h-11 md:w-[52px] md:h-[52px];
   }
 }
 
