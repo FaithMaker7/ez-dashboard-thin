@@ -8,6 +8,7 @@ import { Switch } from "shadcnUi/components/ui/switch";
 import { ChartBar } from "@/components/Charts";
 import ReTable from "@/components/ReTable/index.vue";
 import Pagination from "@/components/Pagination/Pagination.vue";
+import StatisticTable from "./components/table/index.vue";
 import NoData from "@/components/NoData/index.vue";
 import Segmented, { type OptionsType } from "@/components/ReSegmented";
 // 图标
@@ -81,6 +82,7 @@ const optionsBasis: Array<OptionsType> = [
       </div>
       <div class="flex-bs bg-custom-cardBg/50 p-4">
         <ChartBar :requireData="barChartData[curWeek].requireData" />
+        <!-- <StatisticTable /> -->
       </div>
     </div>
     <!-- 统计表格 -->
@@ -94,15 +96,9 @@ const optionsBasis: Array<OptionsType> = [
         Statistics of Hours
       </div>
       <!-- <NoData class="mt-2" /> -->
-      <ReTable class="w-[96%]" />
-      <Pagination class="mt-4" />
+      <!-- <ReTable class="w-[96%]" /> -->
+      <StatisticTable />
+      <!-- <Pagination class="mt-4" /> -->
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.test {
-  width: 10.042vw;
-  max-width: 212px;
-}
-</style>

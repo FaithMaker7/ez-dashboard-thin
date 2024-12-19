@@ -1,9 +1,52 @@
 <script setup lang="ts">
+import { ref, onMounted, reactive } from "vue";
 import { useColumns } from "./columns";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
+import Pagination from "@/components/Pagination/Pagination.vue";
+import { getStatisticTable, type TableStatisticParams } from "@/api/table";
+const { columns, Empty } = useColumns();
 
-const { loading, columns, dataList, pagination, Empty, onCurrentChange } =
-  useColumns();
+const dataList = ref([]);
+const loading = ref(true);
+let pagination = reactive({
+  current: 1,
+  pageSize: 10
+});
+let total = ref(10);
+let totalPage = ref(1);
+const getTableData = async (params: TableStatisticParams) => {
+  loading.value = true;
+  try {
+    console.log("当前tableData请求params:", params);
+    const { data } = await getStatisticTable(params);
+    console.log("当前表格数据:", data);
+    dataList.value = data.list;
+    totalPage.value = data.totalPage;
+    total.value = data.total;
+  } catch (e) {
+    console.log(e);
+  } finally {
+    loading.value = false;
+  }
+  // pagination.total = res.data.total;
+};
+
+function onPageChange(current: number) {
+  console.log("当前页码", current);
+  pagination.current = current;
+  const params = Object.assign(
+    {},
+    {
+      current,
+      pageSize: pagination.pageSize
+    }
+  );
+  getTableData(params);
+}
+
+onMounted(async () => {
+  await getTableData({ ...pagination });
+});
 </script>
 
 <template>
@@ -13,33 +56,25 @@ const { loading, columns, dataList, pagination, Empty, onCurrentChange } =
     showOverflowTooltip
     :loading="loading"
     :loading-config="{ background: 'transparent' }"
-    :data="
-      dataList.slice(
-        (pagination.currentPage - 1) * pagination.pageSize,
-        pagination.currentPage * pagination.pageSize
-      )
-    "
+    :data="dataList"
     :columns="columns"
-    :pagination="pagination"
-    @page-current-change="onCurrentChange"
   >
     <template #empty>
       <el-empty description="暂无数据" :image-size="60">
         <template #image>
-          <Empty />
+          <!-- <Empty /> -->
         </template>
       </el-empty>
     </template>
-    <template #operation="{ row }">
-      <el-button
-        plain
-        circle
-        size="small"
-        :title="`查看序号为${row.id}的详情`"
-        :icon="useRenderIcon('ri:search-line')"
-      />
-    </template>
   </pure-table>
+  <div class="mt-8">
+    <Pagination
+      v-model:page="pagination.current"
+      :total="total"
+      :sibling-count="3"
+      @page-change="onPageChange"
+    />
+  </div>
 </template>
 
 <style lang="scss">

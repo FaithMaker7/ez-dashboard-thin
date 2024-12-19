@@ -17,6 +17,7 @@ export interface TableStatisticResult {
     total: number;
     pageSize: number;
     current: number;
+    totalPage: number;
   };
 }
 
@@ -29,7 +30,7 @@ export interface TableStatisticParams {
 }
 
 export const getStatisticTable = (params?: TableStatisticParams) => {
-  return http.request<TableStatisticResult>("get", "/mock/table/statistic", {
+  return http.request<TableStatisticResult>("get", "/table/statistic", {
     params
   });
 };

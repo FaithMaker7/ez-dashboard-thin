@@ -14,6 +14,10 @@ const props = defineProps({
   requireData: {
     type: Array as PropType<Array<number>>,
     default: () => []
+  },
+  period: {
+    type: String as PropType<string>,
+    default: "hour"
   }
   // questionData: {
   //   type: Array as PropType<Array<number>>,

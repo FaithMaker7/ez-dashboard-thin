@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed, watch } from "vue";
 import { useNav } from "@/layout/hooks/useNav";
 // 组件
 import GlowButton from "@/components/GlowButton/index.vue";
@@ -10,7 +10,8 @@ import ContactCard from "@/components/ContactCard/index.vue";
 import { Switch } from "shadcnUi/components/ui/switch";
 import { ChartBar } from "@/components/Charts";
 import ReInput from "@/components/ReInput/index.vue";
-import ReTable from "@/components/ReTable/index.vue";
+// import ReTable from "@/components/ReTable/index.vue";
+import StatisticTable from "@/views/statistic/components/table/index.vue";
 import Pagination from "@/components/Pagination/Pagination.vue";
 import NoData from "@/components/NoData/index.vue";
 import ReText from "@/components/ReText";
@@ -39,12 +40,24 @@ const vipSystem = [
   { level: 7, free: "20" }
 ];
 const curWeek = ref(0);
-const isHourMode = ref(false);
+const period = ref("hour");
 const formatTypeList = typeList.map(item => ({
   id: item.id,
   task: item.task
 }));
 const clientKey = ref("");
+
+const checked = ref(false);
+
+// watch(checked, newValue => {
+//   period.value = newValue ? "day" : "hour";
+//   console.log(checked.value);
+// });
+
+const handleChange = () => {
+  period.value = checked.value ? "day" : "hour";
+  console.log(checked.value);
+};
 </script>
 
 <template>
@@ -157,9 +170,9 @@ const clientKey = ref("");
         </el-dropdown>
         <div>
           <Switch
-            :checked="isHourMode"
+            :checked="checked"
             class="relative w-[80px] h-[50px] phone:w-[120px] bg-custom-bg"
-            @update:checked="isHourMode = $event"
+            @update:checked="handleChange"
           />
         </div>
       </div>
@@ -176,8 +189,8 @@ const clientKey = ref("");
     <div class="bg-custom-cardBg/40 p-4 rounded-lg mt-4">
       <div class="ml-4 text-custom-norText text-2xl mb-2">Payment History</div>
       <!-- <NoData class="mt-2" /> -->
-      <ReTable class="w-[96%]" />
-      <Pagination class="mt-4" />
+      <StatisticTable />
+      <!-- <Pagination class="mt-4" /> -->
     </div>
   </div>
 </template>

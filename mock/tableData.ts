@@ -3,7 +3,7 @@ import { defineFakeRoute } from "vite-plugin-fake-server/client";
 import Mock from "mockjs";
 
 // 生成模拟数据的函数
-function generateTableData(count = 100) {
+function generateTableData(count = 120) {
   const list = [];
   // 获取当前时间
   const now = new Date();
@@ -94,7 +94,8 @@ export default defineFakeRoute([
           list: finalList,
           total: filteredList.length,
           pageSize: Number(pageSize),
-          current: Number(current)
+          current: Number(current),
+          totalPage: Math.ceil(filteredList.length / Number(pageSize))
         }
       };
     }

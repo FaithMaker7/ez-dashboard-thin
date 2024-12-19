@@ -26,7 +26,7 @@ const props = defineProps({
   // 显示的页码按钮数量
   siblingCount: {
     type: Number,
-    default: 1
+    default: 3
   }
 });
 const emit = defineEmits(["page-change"]);
