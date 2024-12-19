@@ -9,11 +9,7 @@ const TITLE = getConfig("Title");
     class="layout-footer text-custom-norText dark:text-[rgba(220,220,242,0.8)]"
   >
     Copyright © 2021-present
-    <a
-      class="hover:text-primary"
-      href="https://github.com/pure-admin"
-      target="_blank"
-    >
+    <a class="hover:text-primary" href="" target="_blank">
       &nbsp;{{ TITLE }}
     </a>
   </footer>
