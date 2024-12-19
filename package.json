@@ -47,6 +47,7 @@
     "localforage": "^1.10.0",
     "lucide-vue-next": "^0.460.0",
     "mitt": "^3.0.1",
+    "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
     "path": "^0.12.7",
     "pinia": "^2.2.2",

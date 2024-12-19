@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useNav } from "@/layout/hooks/useNav";
+
 // 组件
 import ReText from "@/components/ReText";
 import { Switch } from "shadcnUi/components/ui/switch";
@@ -14,13 +15,14 @@ import Logo from "@/assets/svg/dashboard/recaptcha-logo.svg?component";
 import DownArrow from "@/assets/svg/dashboard/down-arrow.svg?component";
 // 数据
 import { typeList, barChartData } from "@/components/Charts/data";
+
 const { tooltipEffect } = useNav();
 const isHourMode = ref(false);
 const formatTypeList = typeList.map(item => ({
   id: item.id,
   task: item.task
 }));
-let curWeek = ref(1); // 0上周、1本周
+let curWeek = ref(0); // 0上周、1本周
 const optionsBasis: Array<OptionsType> = [
   {
     label: "上周"
@@ -78,7 +80,7 @@ const optionsBasis: Array<OptionsType> = [
         </div> -->
       </div>
       <div class="flex-bs bg-custom-cardBg/50 p-4">
-        <ChartBar :requireData="barChartData[0].requireData" />
+        <ChartBar :requireData="barChartData[curWeek].requireData" />
       </div>
     </div>
     <!-- 统计表格 -->
