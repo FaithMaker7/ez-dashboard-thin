@@ -116,3 +116,11 @@ forget:
   pureForgetSubmit: Submit
   pureForgetTip: After submitting you will receive an email with instructions on what to do next
   pureForgetBack: Back to Login
+table:
+  statistic:
+    columns:
+      period: TIME PERIOD
+      type: CAPTCHA TYPE
+      amount: SOLVE AMOUNT
+      count: SOLVE COUNT
+      time: AVG. SOLVE TIME (MS)

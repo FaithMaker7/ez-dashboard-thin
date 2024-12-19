@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useNav } from "@/layout/hooks/useNav";
+
 // 组件
 import ReText from "@/components/ReText";
 import { Switch } from "shadcnUi/components/ui/switch";
@@ -8,18 +9,28 @@ import { ChartBar } from "@/components/Charts";
 import ReTable from "@/components/ReTable/index.vue";
 import Pagination from "@/components/Pagination/Pagination.vue";
 import NoData from "@/components/NoData/index.vue";
+import Segmented, { type OptionsType } from "@/components/ReSegmented";
 // 图标
 import Logo from "@/assets/svg/dashboard/recaptcha-logo.svg?component";
 import DownArrow from "@/assets/svg/dashboard/down-arrow.svg?component";
 // 数据
 import { typeList, barChartData } from "@/components/Charts/data";
+
 const { tooltipEffect } = useNav();
-const curWeek = ref(0);
 const isHourMode = ref(false);
 const formatTypeList = typeList.map(item => ({
   id: item.id,
   task: item.task
 }));
+let curWeek = ref(0); // 0上周、1本周
+const optionsBasis: Array<OptionsType> = [
+  {
+    label: "上周"
+  },
+  {
+    label: "本周"
+  }
+];
 </script>
 
 <template>
@@ -64,6 +75,9 @@ const formatTypeList = typeList.map(item => ({
             @update:checked="isHourMode = $event"
           />
         </div>
+        <!-- <div class="w-[100px]">
+          <Segmented v-model="curWeek" :options="optionsBasis" />
+        </div> -->
       </div>
       <div class="flex-bs bg-custom-cardBg/50 p-4">
         <ChartBar :requireData="barChartData[curWeek].requireData" />

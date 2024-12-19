@@ -116,3 +116,11 @@ forget:
   pureForgetSubmit: 提交
   pureForgetTip: 提交后您将收到一封电子邮件，其中包含下一步操作的说明
   pureForgetBack: 返回登录
+table:
+  statistic:
+    columns:
+      period: 时间周期
+      type: 校验类型
+      amount: 金额总数
+      count: 请求数量
+      time: 平均请求解决时间
