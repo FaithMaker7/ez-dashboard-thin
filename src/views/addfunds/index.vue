@@ -1,7 +1,6 @@
 <script setup lang="ts">
 // 组件
-import ReTable from "@/components/ReTable/index.vue";
-import Pagination from "@/components/Pagination/Pagination.vue";
+import StatisticTable from "@/views/statistic/components/table/index.vue";
 import ShadProgress from "@/components/ShadProgress/index.vue";
 import NumberInput from "@/components/NumberInput/index.vue";
 import NavButton from "@/components/NavButton/index.vue";
@@ -155,9 +154,9 @@ const paymentLogoStyle = (method: string): string => {
       <div class="sm:ml-4 text-custom-norText text-2xl mb-2">
         Statistics of Hours
       </div>
-      <!-- <NoData class="mt-2" /> -->
-      <ReTable class="w-[96%]" />
-      <Pagination class="mt-4" />
+      <div class="mt-4">
+        <StatisticTable />
+      </div>
     </div>
   </div>
 </template>

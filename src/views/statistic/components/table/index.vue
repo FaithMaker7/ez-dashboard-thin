@@ -3,6 +3,7 @@ import { ref, onMounted, reactive } from "vue";
 import { useColumns } from "./columns";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import Pagination from "@/components/Pagination/Pagination.vue";
+import NoData from "@/components/NoData/index.vue";
 import { getStatisticTable, type TableStatisticParams } from "@/api/table";
 const { columns, Empty } = useColumns();
 
@@ -60,11 +61,11 @@ onMounted(async () => {
     :columns="columns"
   >
     <template #empty>
-      <el-empty description="暂无数据" :image-size="60">
+      <!-- <el-empty description="暂无数据" :image-size="60">
         <template #image>
-          <!-- <Empty /> -->
         </template>
-      </el-empty>
+      </el-empty> -->
+      <NoData class="my-32" />
     </template>
   </pure-table>
   <div class="mt-8">

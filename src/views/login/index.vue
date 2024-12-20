@@ -23,7 +23,7 @@ const { locale, translationCh, translationEn } = useTranslationLang();
 </script>
 
 <template>
-  <div class="select-none bg-[#12193C]">
+  <div class="h-full select-none bg-[#12193C]">
     <!-- <img :src="bg" class="wave" /> -->
     <div class="flex-c absolute right-5 top-3">
       <!-- 国际化 -->

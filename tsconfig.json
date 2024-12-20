@@ -25,7 +25,7 @@
       "@/*": [
         "src/*"
       ],
-      "shadcnUi/*": ["shadcnUi/*"],
+      "shadcnUi/*": ["./shadcnUi/*"],
       "@build/*": [
         "build/*"
       ]
@@ -44,7 +44,10 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "types/*.d.ts",
-    "vite.config.ts"
+    "vite.config.ts",
+    "shadcnUi/**/*.ts",
+    "shadcnUi/**/*.vue",
+    "shadcnUi/**/*.tsx"
   ],
   "exclude": [
     "dist",

@@ -1,33 +1,25 @@
 <script setup lang="ts">
-import { ref, computed, watch } from "vue";
-import { useNav } from "@/layout/hooks/useNav";
+import { ref, computed, watch, onMounted } from "vue";
 // 组件
 import GlowButton from "@/components/GlowButton/index.vue";
 import ShadProgress from "@/components/ShadProgress/index.vue";
 import NavButton from "@/components/NavButton/index.vue";
 import ContactCard from "@/components/ContactCard/index.vue";
-// import ReText from "@/components/ReText";
-import { Switch } from "shadcnUi/components/ui/switch";
-import { ChartBar } from "@/components/Charts";
+import ChartBarWithControls from "@/views/statistic/components/ChartBarWithControls.vue";
 import ReInput from "@/components/ReInput/index.vue";
+import NoData from "@/components/NoData/index.vue";
 // import ReTable from "@/components/ReTable/index.vue";
 import StatisticTable from "@/views/statistic/components/table/index.vue";
-import Pagination from "@/components/Pagination/Pagination.vue";
-import NoData from "@/components/NoData/index.vue";
-import ReText from "@/components/ReText";
+// 数据
 // 图标
 import Vip from "@/assets/svg/dashboard/vip.svg?component";
-import Logo from "@/assets/svg/dashboard/recaptcha-logo.svg?component";
-import DownArrow from "@/assets/svg/dashboard/down-arrow.svg?component";
 import Key from "@/assets/svg/dashboard/key.svg?component";
 import Refresh from "@/assets/svg/dashboard/refresh.svg?component";
 import Copy from "@/assets/svg/dashboard/copy.svg?component";
-// 数据
-import { typeList, barChartData } from "@/components/Charts/data";
+
 defineOptions({
   name: "Welcome"
 });
-const { tooltipEffect } = useNav();
 const levelIndex = ref(1); // 价格等级
 const vipSystem = [
   { level: 0, free: "0" },
@@ -39,25 +31,13 @@ const vipSystem = [
   { level: 6, free: "15" },
   { level: 7, free: "20" }
 ];
-const curWeek = ref(0);
-const period = ref("hour");
-const formatTypeList = typeList.map(item => ({
-  id: item.id,
-  task: item.task
-}));
+
 const clientKey = ref("");
-
-const checked = ref(false);
-
-// watch(checked, newValue => {
-//   period.value = newValue ? "day" : "hour";
-//   console.log(checked.value);
-// });
-
-const handleChange = () => {
-  period.value = checked.value ? "day" : "hour";
-  console.log(checked.value);
-};
+onMounted(() => {
+  // const { data } = await getHourlyData();
+  // barChartData.value = data.list;
+  // console.log("barChartData init", barChartData.value);
+});
 </script>
 
 <template>
@@ -137,47 +117,8 @@ const handleChange = () => {
     </div>
     <!-- 使用量柱形图 -->
     <div class="mt-8">
-      <div
-        class="switch-box flex-c !justify-between bg-custom-primary p-4 rounded-lg"
-      >
-        <el-dropdown
-          id="header-translation"
-          trigger="click"
-          class="w-[60%] sm:w-[40%] xl:w-[30%] h-[50px] flex-c bg-custom-bg rounded-lg"
-        >
-          <!-- <GlobalizationIcon
-            class="navbar-bg-hover w-[40px] h-[48px] p-[11px] cursor-pointer outline-none"
-          /> -->
-          <div class="flex-c">
-            <Logo class="w-6 h-6 rounded-full" />
-            <ReText
-              :tippyProps="{
-                theme: tooltipEffect
-              }"
-              class="!w-[90px] xs:!w-[auto] !text-white !text-xs !ml-2"
-            >
-              FuncaptchaTaskProxyless
-            </ReText>
-            <DownArrow class="flex-c sm:ml-8" />
-          </div>
-          <template #dropdown>
-            <el-dropdown-menu class="translation">
-              <el-dropdown-item v-for="item in formatTypeList" :key="item.id">
-                <span class="text-custom-norText">{{ item.task }}</span>
-              </el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
-        <div>
-          <Switch
-            :checked="checked"
-            class="relative w-[80px] h-[50px] phone:w-[120px] bg-custom-bg"
-            @update:checked="handleChange"
-          />
-        </div>
-      </div>
       <div class="w-full bg-custom-cardBg/50 p-4">
-        <ChartBar :requireData="barChartData[curWeek].requireData" />
+        <ChartBarWithControls class="w-full" />
       </div>
     </div>
     <!-- 统计表格 -->
@@ -188,9 +129,9 @@ const handleChange = () => {
     </div>
     <div class="bg-custom-cardBg/40 p-4 rounded-lg mt-4">
       <div class="ml-4 text-custom-norText text-2xl mb-2">Payment History</div>
-      <!-- <NoData class="mt-2" /> -->
-      <StatisticTable />
-      <!-- <Pagination class="mt-4" /> -->
+      <div class="mt-4">
+        <StatisticTable />
+      </div>
     </div>
   </div>
 </template>

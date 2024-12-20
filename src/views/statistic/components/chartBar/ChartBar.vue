@@ -76,6 +76,10 @@ function getLast30Days(date, days) {
 const formatDays = days.map(item => item.split("-")[2]);
 // console.log(formatDays);
 
+const yInterval = computed(() => {
+  return props.period === "hour" ? 10 : 100;
+});
+
 // 根据 period 计算要显示的 x 轴数据
 const xAxisData = computed(() => {
   if (props.period === "hour") {
@@ -182,7 +186,7 @@ watch(
               opacity: 1
             }
           },
-          interval: 2000
+          interval: yInterval.value
           // name: "单位: 个"
         }
       ],
@@ -190,7 +194,7 @@ watch(
         {
           name: "Average Time Spent:",
           type: "bar",
-          barWidth: 10,
+          barWidth: 8,
           itemStyle: {
             // color: "#41b6ff",
             color: {
@@ -228,6 +232,18 @@ watch(
         //   },
         //   data: props.questionData
         // }
+      ],
+      dataZoom: [
+        {
+          type: "inside",
+          start: 0, // 默认显示前50%的数据
+          end: 50
+        },
+        {
+          type: "slider", // 添加滑动条
+          show: true,
+          bottom: 10
+        }
       ]
     });
   },
